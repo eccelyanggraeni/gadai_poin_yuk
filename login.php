@@ -29,9 +29,9 @@ if (isset($_POST['login'])) {
 			header("Location: beranda.php");
 			echo "Password Verified !";
 		}
-		echo "User Exist !";
+		echo "Invalid Username or Password";
 	}
-	echo "Logged In !";
+	// echo "Logged In !";
 }
 ?>
 
