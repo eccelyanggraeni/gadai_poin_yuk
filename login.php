@@ -1,6 +1,8 @@
 <?php
 require_once("config.php");
 
+$show_warning = false;
+
 if (isset($_POST['login'])) {
 
 	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
@@ -28,10 +30,10 @@ if (isset($_POST['login'])) {
 			// login sukses, alihkan ke halaman timeline
 			header("Location: beranda.php");
 			echo "Password Verified !";
+			$show_warning = false;
 		}
-		echo "Invalid Username or Password";
+		$show_warning = true;
 	}
-	// echo "Logged In !";
 }
 ?>
 
@@ -75,6 +77,14 @@ if (isset($_POST['login'])) {
 					<span class="login100-form-title p-b-33">
 						Account Login
 					</span>
+
+
+					<!-- PHP ALGORITHM IF USERNAME OR PASSWORD IS NOT MATCH, THEN SHOW THE "STRING" !  -->
+					<?php
+					if ($show_warning == true) {
+						echo '<span style="color:#F00; text-align:center;">* Invalid username or password.</span>';
+					}
+					?>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" id="email" name="email" placeholder="Email">

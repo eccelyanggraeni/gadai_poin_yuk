@@ -6,11 +6,16 @@ if (isset($_POST['register'])) {
 
     // filter data yang diinputkan
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+
+    /* Brand new field for register */
+    // $alamat = filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING);
+    // $nohp = filter_input(INPUT_POST, 'nohp', FILTER_SANITIZE_STRING);
+    // $cif = filter_input(INPUT_POST, 'cif', FILTER_SANITIZE_STRING);
+
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     // enkripsi password
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-
 
     // menyiapkan query
     $sql = "INSERT INTO users (name, username, email, password) 
@@ -20,6 +25,12 @@ if (isset($_POST['register'])) {
     // bind parameter ke query
     $params = array(
         ":name" => $name,
+
+        /* Brand new field for register */
+        // ":alamat" => $alamat,
+        // ":nohp" => $nohp,
+        // ":cif" => $cif,
+
         ":username" => $username,
         ":password" => $password,
         ":email" => $email
@@ -79,6 +90,28 @@ if (isset($_POST['register'])) {
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
+
+                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
+
+                    <!-- <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="alamat" placeholder="Address">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="nohp" placeholder="Cellphone Number">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="cif" placeholder="CIF Number">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div> -->
+
+                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
 
                     <div class="wrap-input100 validate-input" data-validate="">
                         <input class="input100" type="text" name="username" placeholder="Username">
