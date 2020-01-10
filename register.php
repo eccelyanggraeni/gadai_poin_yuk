@@ -100,6 +100,7 @@ if (isset($_POST['register'])) {
 
                     <div class="container-login100-form-btn m-t-20">
                         <input type="submit" name="register" class="login100-form-btn" value="Sign Up" />
+                        <button onclick="history.back();" class="login100-form-btn">Cancel </button>
                     </div>
                 </form>
                 <div class="text-center">
