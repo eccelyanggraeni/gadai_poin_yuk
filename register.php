@@ -5,35 +5,30 @@ require_once("config.php");
 if (isset($_POST['register'])) {
 
     // filter data yang diinputkan
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-
-    /* Brand new field for register */
-    // $alamat = filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING);
-    // $nohp = filter_input(INPUT_POST, 'nohp', FILTER_SANITIZE_STRING);
-    // $cif = filter_input(INPUT_POST, 'cif', FILTER_SANITIZE_STRING);
-
+    $cif = filter_input(INPUT_POST, 'cif', FILTER_SANITIZE_STRING);
+    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
+    $alamat = filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $no_hp = filter_input(INPUT_POST, 'no_hp', FILTER_SANITIZE_STRING);
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     // enkripsi password
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    
 
     // menyiapkan query
-    $sql = "INSERT INTO users (name, username, email, password) 
-            VALUES (:name, :username, :email, :password)";
+    $sql = "INSERT INTO user (cif, nama, alamat, email, no_hp, username, password) 
+            VALUES (:cif, :nama, :alamat, :email, :no_hp, :username, :password)";
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
     $params = array(
-        ":name" => $name,
-
-        /* Brand new field for register */
-        // ":alamat" => $alamat,
-        // ":nohp" => $nohp,
-        // ":cif" => $cif,
-
+        ":cif" => $cif,
+        ":nama" => $nama,
+        ":alamat" => $alamat,
+        ":email" => $email,
+        ":no_hp" => $no_hp,
         ":username" => $username,
-        ":password" => $password,
-        ":email" => $email
+        ":password" => $password
     );
 
     // eksekusi query untuk menyimpan ke database
@@ -86,21 +81,21 @@ if (isset($_POST['register'])) {
                         Account Register
                     </span>
                     <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="name" placeholder="Name">
+                        <input class="input100" type="text" name="nama" placeholder="Name">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
 
                     <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
 
-                    <!-- <div class="wrap-input100 validate-input" data-validate="">
+                    <div class="wrap-input100 validate-input" data-validate="">
                         <input class="input100" type="text" name="alamat" placeholder="Address">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="nohp" placeholder="Cellphone Number">
+                        <input class="input100" type="text" name="no_hp" placeholder="Cellphone Number">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
@@ -109,7 +104,7 @@ if (isset($_POST['register'])) {
                         <input class="input100" type="text" name="cif" placeholder="CIF Number">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
-                    </div> -->
+                    </div>
 
                     <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
 

@@ -72,9 +72,9 @@
                 <div class="col-sm-2">
                     <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
                         <br>
-                        <img src="img/usericon.png" width="60%" height="60%" style="align-content: center;" alt="">
-                        <h6><?php echo $_SESSION["user"]["name"] ?></h6>
-                        <p><?php echo $_SESSION["user"]["email"] ?></p>
+                        <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt="">
+                        <h6><?php echo $_SESSION["user"]["nama"] ?></h6>
+                        <p><?php echo $_SESSION["user"]["cif"] ?></p>
                     </div>
                 </div>
                 <div class="col-sm-10">
