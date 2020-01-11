@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
 	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-	$sql = "SELECT * FROM users WHERE email=:email";
+	$sql = "SELECT * FROM user WHERE email=:email";
 	$stmt = $db->prepare($sql);
 
 	// bind parameter ke query
@@ -77,7 +77,6 @@ if (isset($_POST['login'])) {
 					<span class="login100-form-title p-b-33">
 						Account Login
 					</span>
-
 
 					<!-- PHP ALGORITHM IF USERNAME OR PASSWORD IS NOT MATCH, THEN SHOW THE "STRING" !  -->
 					<?php
