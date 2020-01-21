@@ -28,17 +28,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
                 <ul class="nav nav-pills">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="tukarpoin.php" id="navbardrop" data-toggle="dropdown">
-                            <strong>Poin</strong>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="aktivitas.php">Aktivitas</a>
-                            <a class="dropdown-item" href="peringkat.php">Peringkat Anda</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="beranda.php"><strong>Beranda</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
+                        <a class="nav-link" href="profil.php"><strong>Edit Profil</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
@@ -54,7 +48,7 @@
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
-            <h4 style="color: #e9ecef;">Aktivitas</h4>
+            <h1 style="color: #e9ecef;">Aktivitas</h1>
             <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
             <div class="row">
                 <div class="col-sm-2">
@@ -71,11 +65,20 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-sm-6">
-                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;"></div>
+                <div class="col-sm-4">
+                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
+                        <h4>Aktivitas Harian</h4>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;"></div>
+                <div class="col-sm-4">
+                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
+
+                    </div>
                 </div>
             </div>
             <br>

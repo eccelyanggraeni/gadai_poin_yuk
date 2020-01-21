@@ -27,17 +27,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
                 <ul class="nav nav-pills">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="tukarpoin.php" id="navbardrop" data-toggle="dropdown">
-                            <strong>Poin</strong>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="aktivitas.php">Aktivitas</a>
-                            <a class="dropdown-item" href="peringkat.php">Peringkat Anda</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="beranda.php"><strong>Beranda</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
+                        <a class="nav-link" href="profil.php"><strong>Edit Profil</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
@@ -53,7 +47,7 @@
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menulong.png); width: 100%; height: 50%;">
-            <h4 style="color: #e9ecef;">Bantuan</h4>
+            <h3 style="color: #e9ecef;">Bantuan</h3>
             <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
 
             <div id="accordion">
@@ -132,10 +126,9 @@
             <br><br>
             <b>Hubungi Kami:</b><br>
             <a href="https://www.instagram.com/pegadaian_id/"><img src="img/icons8-instagram-100.png" width="50" alt="Instagram"></a>
-            <a href="#"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
-            <a href="#"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
-            <a href="#"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
-            <a href="#"><img src="img/icons8-google-plus-100.png" width="50" alt="Google+"></a>
+            <a href="https://twitter.com/shbt_pegadaian?lang=en"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
+            <a href="https://www.youtube.com/user/PegadaianTV"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
+            <a href="https://www.facebook.com/PegadaianPersero/"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
         </p>
 
         <p><b>PT. Pegadaian (Persero)</b><br>

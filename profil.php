@@ -1,12 +1,43 @@
-<?php require_once("auth.php"); ?>
+<?php
+require_once("auth.php");
+// include("config.php");
+
+// if (isset($_POST['but_upload'])) {
+
+//     $name = $_FILES['file']['name'];
+//     $target_dir = "upload/";
+//     $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+//     // Select file type
+//     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+//     // Valid file extensions
+//     $extensions_arr = array("jpg", "jpeg", "png", "gif");
+
+//     // Check extension
+//     if (in_array($imageFileType, $extensions_arr)) {
+
+//         // Convert to base64 
+//         $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
+//         $image = 'data:image/' . $imageFileType . ';base64,' . $image_base64;
+//         // Insert record
+//         $query = "insert into user(profile_pic) values('" . $image . "')";
+//         mysqli_query($con, $query);
+
+//         // Upload file
+//         move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+//     }
+// }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profil</title>
+    <title>Beranda</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -14,9 +45,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .carousel-item {
+            height: 250px;
+        }
+
+        .carousel-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-height: 250px;
+        }
+    </style>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
 </head>
 
 <body>
+
     <!-- Navbar Header Section -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="beranda.php">
@@ -28,17 +94,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
                 <ul class="nav nav-pills">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="tukarpoin.php" id="navbardrop" data-toggle="dropdown">
-                            <strong>Poin</strong>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="aktivitas.php">Aktivitas</a>
-                            <a class="dropdown-item" href="peringkat.php">Peringkat Anda</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="beranda.php"><strong>Beranda</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
+                        <a class="nav-link" href="profil.php"><strong>Edit Profil</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
@@ -52,31 +112,85 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
-        <div class="jumbotron" style="background-image: url(img/menulong.png); width: 100%; height: 50%;">
-            <h4 style="color: #e9ecef;">Profil</h4>
-            <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
-            <div class="row">
-                <div class="col-sm-2">
-                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
-                        <br>
-                        <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt="">
-                        <h6><?php echo $_SESSION["user"]["nama"] ?></h6>
-                        <p><?php echo $_SESSION["user"]["cif"] ?></p>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+                <form action="" method="POST" class="login100-form validate-form">
+                    <span class="login100-form-title p-b-33">
+                        Edit Profil
+                    </span>
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="nama" placeholder="Name">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
                     </div>
-                </div>
-                <div class="col-sm-10">
-                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm">
-                    <div style="background-color:#e9ecef; width: auto; height: 200px; border-radius: 10px;"></div>
-                </div>
+
+                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="alamat" placeholder="Address">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="no_hp" placeholder="Cellphone Number">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="cif" placeholder="CIF Number">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-20">
+                        <input type="submit" name="save" class="login100-form-btn" value="Save" />
+                        <button onclick="history.back();" class="login100-form-btn">Cancel </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
 </body>
 
 <!-- Navbar Footer Section -->
@@ -89,10 +203,9 @@
             <br><br>
             <b>Hubungi Kami:</b><br>
             <a href="https://www.instagram.com/pegadaian_id/"><img src="img/icons8-instagram-100.png" width="50" alt="Instagram"></a>
-            <a href="#"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
-            <a href="#"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
-            <a href="#"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
-            <a href="#"><img src="img/icons8-google-plus-100.png" width="50" alt="Google+"></a>
+            <a href="https://twitter.com/shbt_pegadaian?lang=en"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
+            <a href="https://www.youtube.com/user/PegadaianTV"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
+            <a href="https://www.facebook.com/PegadaianPersero/"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
         </p>
 
         <p><b>PT. Pegadaian (Persero)</b><br>

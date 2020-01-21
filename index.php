@@ -118,10 +118,9 @@
             <br><br>
             <b>Hubungi Kami:</b><br>
             <a href="https://www.instagram.com/pegadaian_id/"><img src="img/icons8-instagram-100.png" width="50" alt="Instagram"></a>
-            <a href="#"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
-            <a href="#"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
-            <a href="#"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
-            <a href="#"><img src="img/icons8-google-plus-100.png" width="50" alt="Google+"></a>
+            <a href="https://twitter.com/shbt_pegadaian?lang=en"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
+            <a href="https://www.youtube.com/user/PegadaianTV"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
+            <a href="https://www.facebook.com/PegadaianPersero/"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
         </p>
 
         <p><b>PT. Pegadaian (Persero)</b><br>

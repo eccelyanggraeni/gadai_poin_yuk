@@ -41,17 +41,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
                 <ul class="nav nav-pills">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="tukarpoin.php" id="navbardrop" data-toggle="dropdown">
-                            <strong>Poin</strong>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="aktivitas.php">Aktivitas</a>
-                            <a class="dropdown-item" href="peringkat.php">Peringkat Anda</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="beranda.php"><strong>Beranda</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
+                        <a class="nav-link" href="profil.php"><strong>Edit Profil</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
@@ -67,7 +61,7 @@
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
-            <h4 style="color: #e9ecef;">Beranda</h4>
+            <h3 style="color: #e9ecef;">Beranda</h3>
             <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
             <div class="row">
                 <div class="col-sm-2">
@@ -78,15 +72,109 @@
                         <p><?php echo $_SESSION["user"]["cif"] ?></p>
                     </div>
                 </div>
-                <div class="col-sm-10">
-                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;"></div>
+                <div class="col-sm-3" data-toggle="modal" data-target="#detailPoin">
+                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
+                        <div style="padding: 25px;">
+                            <h5>Poin Anda</h5><br>
+
+                            <h1>490 poin</h1><br>
+                            <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif">90 poin akan kadaluarsa sampai dengan 31 Maret 2020</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Modal Poin -->
+                <div id="detailPoin" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Detail Poin</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Some text in the modal.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3" data-toggle="modal" data-target="#detailPeringkat">
+                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
+                        <div style="padding: 25px;">
+                            <h5>Peringkat Anda</h5><br>
+
+                            <h1>1</h1><br>
+                            <!-- <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif;">Wah Anda hebat. Terus dapatkan poin untuk mempertahankan posisimu.</p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Peringkat -->
+                <div id="detailPeringkat" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Detail Peringkat</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Some text in the modal.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4" data-toggle="modal" data-target="#detailAktivitas">
+                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
+                        <div style="padding: 25px;">
+                            <h5>Aktivitas Anda</h5><br>
+
+                            <h1>Play the Game !</h1><br>
+                            <!-- <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif">90 poin akan kadaluarsa sampai dengan 31 Maret 2020</p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Aktivitas -->
+                <div id="detailAktivitas" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Detail Aktivitas</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Some text in the modal.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
             <br>
             <div class="row">
                 <div class="col-sm">
                     <div style="background-color:#e9ecef;">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin: 0px">
+
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding: 0px">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -94,13 +182,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/promo.jpeg" alt="First slide" height="50%">
+                                    <img class="d-block w-100" src="img/promo.jpeg" alt="First slide" height="40%">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="50%">
+                                    <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/promo2.jpeg" alt="Third slide" height="50%">
+                                    <img class="d-block w-100" src="img/promo2.jpeg" alt="Third slide" height="40%">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -115,6 +203,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </body>
@@ -129,10 +218,9 @@
             <br><br>
             <b>Hubungi Kami:</b><br>
             <a href="https://www.instagram.com/pegadaian_id/"><img src="img/icons8-instagram-100.png" width="50" alt="Instagram"></a>
-            <a href="#"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
-            <a href="#"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
-            <a href="#"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
-            <a href="#"><img src="img/icons8-google-plus-100.png" width="50" alt="Google+"></a>
+            <a href="https://twitter.com/shbt_pegadaian?lang=en"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
+            <a href="https://www.youtube.com/user/PegadaianTV"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
+            <a href="https://www.facebook.com/PegadaianPersero/"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
         </p>
 
         <p><b>PT. Pegadaian (Persero)</b><br>
