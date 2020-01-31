@@ -31,7 +31,7 @@
                         <a class="nav-link" href="beranda.php"><strong>Beranda</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.php"><strong>Edit Profil</strong></a>
+                        <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
@@ -54,7 +54,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseOne" style="color:#198C09;">
-                            <strong>List 1</strong>
+                            <strong>Daftar 1</strong>
                         </a>
                     </div>
                     <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -71,7 +71,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseTwo" style="color:#198C09;">
-                            <strong>List 2</strong>
+                            <strong>Daftar 2</strong>
                         </a>
                     </div>
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -86,7 +86,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseThree" style="color:#198C09;">
-                            <strong>List 3</strong>
+                            <strong>Daftar 3</strong>
                         </a>
                     </div>
                     <div id="collapseThree" class="collapse" data-parent="#accordion">
@@ -101,7 +101,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseFour" style="color:#198C09;">
-                            <strong>List 4</strong>
+                            <strong>Daftar 4</strong>
                         </a>
                     </div>
                     <div id="collapseFour" class="collapse" data-parent="#accordion">

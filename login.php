@@ -75,7 +75,7 @@ if (isset($_POST['login'])) {
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 				<form action="" method="POST" class="login100-form validate-form">
 					<span class="login100-form-title p-b-33">
-						Account Login
+						Masuk Akun
 					</span>
 
 					<!-- PHP ALGORITHM IF USERNAME OR PASSWORD IS NOT MATCH, THEN SHOW THE "STRING" !  -->
@@ -86,7 +86,7 @@ if (isset($_POST['login'])) {
 					?>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" id="email" name="email" placeholder="Email">
+						<input class="input100" type="text" id="email" name="email" placeholder="E-mail">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -98,8 +98,8 @@ if (isset($_POST['login'])) {
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<input type="submit" name="login" class="login100-form-btn" value="Sign in" />
-						<button onclick="history.back();" class="login100-form-btn">Cancel </button>
+						<input type="submit" name="login" class="login100-form-btn" value="Masuk" />
+						<button onclick="history.back();" class="login100-form-btn">Batal</button>
 					</div>
 				</form>
 				<!-- <div class="text-center p-t-45 p-b-4">
@@ -114,11 +114,11 @@ if (isset($_POST['login'])) {
 
 				<div class="text-center">
 					<span class="txt1">
-						Create an account?
+						Ingin mendaftar Akun?
 					</span>
 
 					<a href="register.php" class="txt2 hov1">
-						Sign up
+						Daftar
 					</a>
 				</div>
 			</div>

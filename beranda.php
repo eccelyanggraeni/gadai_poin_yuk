@@ -26,6 +26,24 @@
             left: 0;
             min-height: 250px;
         }
+
+        #myUL {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px;
+            /* Prevent double borders */
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block
+        }
     </style>
 </head>
 
@@ -45,7 +63,7 @@
                         <a class="nav-link" href="beranda.php"><strong>Beranda</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.php"><strong>Edit Profil</strong></a>
+                        <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
@@ -67,40 +85,19 @@
                 <div class="col-sm-2">
                     <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
                         <br>
-                        <a class="" href="aktivitas.php"><img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""></a><br>
+                        <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""><br>
                         <h6><?php echo $_SESSION["user"]["nama"] ?></h6>
                         <p><?php echo $_SESSION["user"]["cif"] ?></p>
                     </div>
                 </div>
-                <div class="col-sm-3" data-toggle="modal" data-target="#detailPoin">
+                <div class="col-sm-3">
                     <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
                         <div style="padding: 25px;">
                             <h5>Poin Anda</h5><br>
 
                             <h1>490 poin</h1><br>
-                            <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif">90 poin akan kadaluarsa sampai dengan 31 Maret 2020</p>
+                            <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif">Poin akan direset ulang pada tanggal 31 Desember 2020</p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Modal Poin -->
-                <div id="detailPoin" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Detail Poin</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Some text in the modal.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -109,7 +106,7 @@
                         <div style="padding: 25px;">
                             <h5>Peringkat Anda</h5><br>
 
-                            <h1>1</h1><br>
+                            <h1>1 / 5120</h1><br>
                             <!-- <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif;">Wah Anda hebat. Terus dapatkan poin untuk mempertahankan posisimu.</p> -->
                         </div>
                     </div>
@@ -126,7 +123,24 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <p>Some text in the modal.</p>
+                                <ul id="myUL">
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Gabe Dimas Wicaksana</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Agnes</a></li>
+
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Billy</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Bob</a></li>
+
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Calvin</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Christina</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Cindy</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Cindy</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Cindy</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Cindy</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Cindy</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Cindy</a></li>
+                                    <li><a href="#"><img src="img/user.png" alt="" height="32px" width="32px">&nbsp;&nbsp;&nbsp;Cindy</a></li>
+
+                                </ul>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -154,11 +168,45 @@
                         <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Detail Aktivitas</h4>
+                                <h4 class="modal-title">Daftar Aktivitas</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <p>Some text in the modal.</p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, rem? Error laboriosam quos, labore eos non est commodi eveniet nemo ab magni, facere tempora fugit optio. Modi ea tempora dolor?
+
+                                <!-- <div class="row">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
+                                        <div style="padding: 20px; text-align: center">
+                                            <img src="img/game1.png" alt="" height="125px" width="125px" style="align-content: center;">
+                                            <h5>Permainan 1</h5><br>
+                                        </div>
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
+                                        <div style="padding: 20px; text-align: center">
+                                            <img src="img/game2.png" alt="" height="125px" width="125px" style="align-content: center;">
+                                            <h5>Permainan 2</h5><br>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!-- <br> -->
+                                <!-- <div class="row">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
+                                        <div style="padding: 20px; text-align: center">
+                                            <img src="img/game3.png" alt="" height="125px" width="125px" style="align-content: center;">
+                                            <h5>Permainan 3</h5><br>
+                                        </div>
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
+                                        <div style="padding: 20px; text-align: center">
+                                            <img src="img/game4.png" alt="" height="125px" width="125px" style="align-content: center;">
+                                            <h5>Permainan 4</h5><br>
+                                        </div>
+                                    </div>
+                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -169,38 +217,72 @@
                 </div>
 
             </div>
-            <br>
+            <!-- <br> -->
             <div class="row">
                 <div class="col-sm">
-                    <div style="background-color:#e9ecef;">
-
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding: 0px">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/promo.jpeg" alt="First slide" height="40%">
+                    <br>
+                    <h4 style="color: #e9ecef;">Voucher Anda</h4>
+                        <div style="background-color:#e9ecef;">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding: 0px">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="img/promo.jpeg" alt="First slide" height="40%">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="img/promo2.jpeg" alt="Third slide" height="40%">
+                                    </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/promo2.jpeg" alt="Third slide" height="40%">
-                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
                         </div>
-                    </div>
+                </div>
+                <br>
+                <div class="col-sm">
+                    <br>
+                    <h4 style="color: #e9ecef;">Redeemable Voucher</h4>
+                        <div style="background-color:#e9ecef;">
+                            <div id="carouselExampleIndicators_1" class="carousel slide" data-ride="carousel" style="padding: 0px">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators_1" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators_1" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators_1" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="img/promo.jpeg" alt="First slide" height="40%">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="img/promo2.jpeg" alt="Third slide" height="40%">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators_1" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators_1" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
                 </div>
             </div>
 

@@ -1,31 +1,11 @@
 <?php
 require_once("auth.php");
-// include("config.php");
 
-// if (isset($_POST['but_upload'])) {
-
-//     $name = $_FILES['file']['name'];
-//     $target_dir = "upload/";
-//     $target_file = $target_dir . basename($_FILES["file"]["name"]);
-
-//     // Select file type
-//     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-//     // Valid file extensions
-//     $extensions_arr = array("jpg", "jpeg", "png", "gif");
-
-//     // Check extension
-//     if (in_array($imageFileType, $extensions_arr)) {
-
-//         // Convert to base64 
-//         $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
-//         $image = 'data:image/' . $imageFileType . ';base64,' . $image_base64;
-//         // Insert record
-//         $query = "insert into user(profile_pic) values('" . $image . "')";
-//         mysqli_query($con, $query);
-
-//         // Upload file
-//         move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+// if (isset($_GET['user'])) {
+//     $user = $_GET['user'];
+//     $get_user = $mysqli->query("SELECT * FROM user WHERE username = '$user'");
+//     if ($get_user->num_rows == 1) {
+//         $profile_data = $get_user->fetch_assoc();
 //     }
 // }
 ?>
@@ -33,11 +13,12 @@ require_once("auth.php");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Beranda</title>
+    <title><?php echo $_SESSION["user"]["username"] ?>'s Profile</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -98,7 +79,7 @@ require_once("auth.php");
                         <a class="nav-link" href="beranda.php"><strong>Beranda</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil.php"><strong>Edit Profil</strong></a>
+                        <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
@@ -115,61 +96,41 @@ require_once("auth.php");
     <div class="limiter">
         <div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-                <form action="" method="POST" class="login100-form validate-form">
-                    <span class="login100-form-title p-b-33">
-                        Edit Profil
-                    </span>
-                    <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="nama" placeholder="Name">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div>
+                <span class="login100-form-title p-b-33">
+                    <?php echo $_SESSION["user"]["username"] ?>'s Profile<br><br>
+                    <a class="" href="aktivitas.php"><img src="img/user.png" width="25%" height="25%" style="align-content: center;" alt=""></a><br>
+                </span>
 
-                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
-
-                    <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="alamat" placeholder="Address">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="no_hp" placeholder="Cellphone Number">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="cif" placeholder="CIF Number">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div>
-
-                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
-
-                    <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="username" placeholder="Username">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Email">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div>
-
-                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" placeholder="Password">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div>
-
-                    <div class="container-login100-form-btn m-t-20">
-                        <input type="submit" name="save" class="login100-form-btn" value="Save" />
-                        <button onclick="history.back();" class="login100-form-btn">Cancel </button>
-                    </div>
-                </form>
+                <table>
+                    <tr height="50">
+                        <td width="100"><strong>CIF:</strong></td>
+                        <td><?php echo $_SESSION["user"]['cif'] ?></td>
+                    </tr>
+                    <tr height="50">
+                        <td width="100"><strong>Nama:</strong></td>
+                        <td><?php echo $_SESSION["user"]['nama'] ?></td>
+                    </tr>
+                    <tr height="50">
+                        <td width="100"><strong>Alamat:</strong></td>
+                        <td><?php echo $_SESSION["user"]['alamat'] ?></td>
+                    </tr>
+                    <tr height="50">
+                        <td width="100"><strong>E-mail:</strong></td>
+                        <td><?php echo $_SESSION["user"]['email'] ?></td>
+                    </tr>
+                    <tr height="50">
+                        <td width="100"><strong>No. HP:</strong></td>
+                        <td><?php echo $_SESSION["user"]['no_hp'] ?></td>
+                    </tr>
+                    <tr height="50">
+                        <td width="125"><strong>Username:</strong></td>
+                        <td><?php echo $_SESSION["user"]['username'] ?></td>
+                    </tr>
+                </table>
+                <div class="container-login100-form-btn m-t-20">
+                    <button onclick="window.location.href = 'edit_profil.php';" class="login100-form-btn">Ubah Profil</button>
+                    <button onclick="history.back();" class="login100-form-btn">Batal</button>
+                </div>
             </div>
         </div>
     </div>
