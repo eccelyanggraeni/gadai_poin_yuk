@@ -105,9 +105,7 @@
                     <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
                         <div style="padding: 25px;">
                             <h5>Peringkat Anda</h5><br>
-
                             <h1>1 / 5120</h1><br>
-                            <!-- <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif;">Wah Anda hebat. Terus dapatkan poin untuk mempertahankan posisimu.</p> -->
                         </div>
                     </div>
                 </div>
@@ -217,7 +215,7 @@
                 </div>
 
             </div>
-            <!-- <br> -->
+            
             <div class="row">
                 <div class="col-sm">
                     <br>
