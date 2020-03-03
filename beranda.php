@@ -179,40 +179,6 @@
                             </div>
                             <div class="modal-body">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, rem? Error laboriosam quos, labore eos non est commodi eveniet nemo ab magni, facere tempora fugit optio. Modi ea tempora dolor?
-
-                                <!-- <div class="row">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
-                                        <div style="padding: 20px; text-align: center">
-                                            <img src="img/game1.png" alt="" height="125px" width="125px" style="align-content: center;">
-                                            <h5>Permainan 1</h5><br>
-                                        </div>
-                                    </div>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
-                                        <div style="padding: 20px; text-align: center">
-                                            <img src="img/game2.png" alt="" height="125px" width="125px" style="align-content: center;">
-                                            <h5>Permainan 2</h5><br>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- <br> -->
-                                <!-- <div class="row">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
-                                        <div style="padding: 20px; text-align: center">
-                                            <img src="img/game3.png" alt="" height="125px" width="125px" style="align-content: center;">
-                                            <h5>Permainan 3</h5><br>
-                                        </div>
-                                    </div>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px;">
-                                        <div style="padding: 20px; text-align: center">
-                                            <img src="img/game4.png" alt="" height="125px" width="125px" style="align-content: center;">
-                                            <h5>Permainan 4</h5><br>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
