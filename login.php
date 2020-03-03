@@ -42,30 +42,7 @@ if (isset($_POST['login'])) {
 
 <head>
 	<title>Login - Gadai Poin Yuk</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!--===============================================================================================-->
+	<?php include('layout/head.php') ?>   	
 </head>
 
 <body>
@@ -124,56 +101,8 @@ if (isset($_POST['login'])) {
 			</div>
 		</div>
 	</div>
-
-
-
-	<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
 </body>
 
-<!-- Navbar Footer Section -->
-<footer class="text-muted" style="margin-top:30px;">
-	<div class="container">
-		<p class="float-right">
-			<b>Kontak :</b><br>
-			+62213155550/+622180635162
-
-			<br><br>
-			<b>Hubungi Kami:</b><br>
-			<a href="https://www.instagram.com/pegadaian_id/"><img src="img/icons8-instagram-100.png" width="50" alt="Instagram"></a>
-            <a href="https://twitter.com/shbt_pegadaian?lang=en"><img src="img/icons8-twitter-100.png" width="50" alt="Twitter"></a>
-            <a href="https://www.youtube.com/user/PegadaianTV"><img src="img/icons8-play-button-100.png" width="50" alt="Youtube"></a>
-            <a href="https://www.facebook.com/PegadaianPersero/"><img src="img/icons8-facebook-old-100.png" width="50" alt="Facebook"></a>
-		</p>
-
-		<p><b>PT. Pegadaian (Persero)</b><br>
-			Kantor Pusat:<br>
-			Jl. Kramat Raya 162 Jakarta Pusat<br>
-			10430<br>
-			INDONESIA<br><br><br>
-		</p>
-	</div>
-	<div class="footer-copyright text-center py-3">
-		Copyright © 2020 PT. Pegadaian (Persero). All rights reserved.
-	</div>
-</footer>
-
-<footer class="page-footer font-small blue text-muted">
-</footer>
+<?php include('layout/footer.php') ?>
 
 </html>
