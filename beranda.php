@@ -53,7 +53,6 @@
 
 <body>
     <?php include('layout/navbar-menu.php') ?>    
-
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
@@ -168,16 +167,16 @@
                                     <div class="carousel-content">
                                         <h4>100 poin</h4>
                                     </div>
+                                </div>
 
-
-                                    <!-- Modal Voucher Anda -->
-                                    <div id="detail_myVoucher" class="modal fade" role="dialog">
+                                <!-- Modal Voucher Anda -->
+                                <div id="detail_myVoucher" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Detail Voucher And</h4>
+                                                    <h4 class="modal-title">Detail Voucher Anda</h4>
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                 </div>
                                                 <div class="modal-body">
@@ -190,7 +189,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
                                     <div class="carousel-content">
@@ -230,14 +229,16 @@
                                     <div class="carousel-content">
                                         <h4>100 poin</h4>
                                     </div>
-                                    <!-- Modal Voucher Redeemable -->
-                                    <div id="detail_myVoucher" class="modal fade" role="dialog">
+                                </div>
+
+                                <!-- Modal Voucher Redeemable -->
+                                <div id="detail_myVoucher" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Detail Voucher And</h4>
+                                                    <h4 class="modal-title">Detail Voucher Redeemable</h4>
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                 </div>
                                                 <div class="modal-body">
@@ -251,7 +252,6 @@
                                         </div>
                                     </div>
 
-                                </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
                                     <div class="carousel-content">
