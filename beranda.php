@@ -1,5 +1,7 @@
-<?php require_once("auth.php"); ?>
 
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,8 +66,8 @@
                     <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
                         <br>
                         <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""><br>
-                        <h6><?php echo $_SESSION["user"]["nama"] ?></h6>
-                        <p><?php echo $_SESSION["user"]["cif"] ?></p>
+                        <h6><?php echo $_SESSION["username"] ?></h6>
+                        <p><?php echo $_SESSION["cif"] ?></p>
                     </div>
                 </div>
                 <div class="col-sm-3">
