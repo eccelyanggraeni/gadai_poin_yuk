@@ -160,6 +160,9 @@ if (isset($_POST['register'])) {
                         <button onclick="history.back();" class="login100-form-btn">Batal</button>
                     </div>
                 </form>
+
+
+                
                 <div class="text-center">
                     <span class="txt1">
                         Sudah memiliki Akun?
