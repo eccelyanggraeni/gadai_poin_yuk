@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php require_once("auth.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -5,6 +6,18 @@
 <head>
     <title>Beranda</title>
     <?php include('layout/head.php') ?>
+=======
+
+<?php 
+    session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>    
+    <title>Beranda</title> 
+    <?php include('layout/head.php') ?>   
+>>>>>>> 93e4991fcd0155ac2d55923b581ba359d259aa44
     <style>
         .carousel-item {
             height: 250px;
@@ -50,7 +63,12 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <?php include('layout/navbar-menu.php') ?>
+=======
+    <?php include('layout/navbar-menu.php') ?>    
+
+>>>>>>> 93e4991fcd0155ac2d55923b581ba359d259aa44
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
@@ -60,9 +78,9 @@
                 <div class="col-sm-2">
                     <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
                         <br>
-                        <a href="profil.php"><img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""></a><br>
-                        <h6><?php echo $_SESSION["user"]["nama"] ?></h6>
-                        <p><?php echo $_SESSION["user"]["cif"] ?></p>
+                        <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""><br>
+                        <h6><?php echo $_SESSION["username"] ?></h6>
+                        <p><?php echo $_SESSION["cif"] ?></p>
                     </div>
                 </div>
                 <div class="col-sm-3">

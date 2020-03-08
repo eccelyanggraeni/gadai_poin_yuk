@@ -1,43 +1,43 @@
 <?php
 
-require_once("config.php");
+// require_once("config.php");
 
-if (isset($_POST['register'])) {
+// if (isset($_POST['register'])) {
 
-    // filter data yang diinputkan
-    $cif = filter_input(INPUT_POST, 'cif', FILTER_SANITIZE_STRING);
-    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
-    $alamat = filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-    $no_hp = filter_input(INPUT_POST, 'no_hp', FILTER_SANITIZE_STRING);
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    // enkripsi password
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+//     // filter data yang diinputkan
+//     $cif = filter_input(INPUT_POST, 'cif', FILTER_SANITIZE_STRING);
+//     $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
+//     $alamat = filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING);
+//     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+//     $no_hp = filter_input(INPUT_POST, 'no_hp', FILTER_SANITIZE_STRING);
+//     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+//     // enkripsi password
+//     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 
-    // menyiapkan query
-    $sql = "INSERT INTO user (cif, nama, alamat, email, no_hp, username, password) 
-            VALUES (:cif, :nama, :alamat, :email, :no_hp, :username, :password)";
-    $stmt = $db->prepare($sql);
+//     // menyiapkan query
+//     $sql = "INSERT INTO user (cif, nama, alamat, email, no_hp, username, password) 
+//             VALUES (:cif, :nama, :alamat, :email, :no_hp, :username, :password)";
+//     $stmt = $db->prepare($sql);
 
-    // bind parameter ke query
-    $params = array(
-        ":cif" => $cif,
-        ":nama" => $nama,
-        ":alamat" => $alamat,
-        ":email" => $email,
-        ":no_hp" => $no_hp,
-        ":username" => $username,
-        ":password" => $password
-    );
+//     // bind parameter ke query
+//     $params = array(
+//         ":cif" => $cif,
+//         ":nama" => $nama,
+//         ":alamat" => $alamat,
+//         ":email" => $email,
+//         ":no_hp" => $no_hp,
+//         ":username" => $username,
+//         ":password" => $password
+//     );
 
-    // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
+//     // eksekusi query untuk menyimpan ke database
+//     $saved = $stmt->execute($params);
 
-    // jika query simpan berhasil, maka user sudah terdaftar
-    // maka alihkan ke halaman login
-    if ($saved) header("Location: login.php");
-}
+//     // jika query simpan berhasil, maka user sudah terdaftar
+//     // maka alihkan ke halaman login
+//     if ($saved) header("Location: login.php");
+// }
 
 /* ----------------- Prototype JSON GET API using cURL ----------------- */
 // function callAPI($method, $url, $data)
@@ -105,7 +105,7 @@ if (isset($_POST['register'])) {
     <div class="limiter">
         <div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-                <form action="" method="POST" class="login100-form validate-form">
+                <form action="" method="" class="login100-form validate-form" id="form-register">
                     <span class="login100-form-title p-b-33">
                         Daftar Akun
                     </span>
@@ -157,7 +157,7 @@ if (isset($_POST['register'])) {
 
                     <div class="container-login100-form-btn m-t-20">
                         <input type="submit" name="register" class="login100-form-btn" value="Daftar" />
-                        <button onclick="history.back();" class="login100-form-btn">Batal</button>
+                        <button onclick="window.location.href='index.php';" class="login100-form-btn">Batal</button>
                     </div>
                 </form>
 
@@ -179,4 +179,40 @@ if (isset($_POST['register'])) {
 
 <?php include('layout/footer.php') ?>
 
+<script>
+    $("#form-register").submit(function(e){
+        e.preventDefault();
+        var nama = $("input[name=nama]").val();
+        var alamat = $("input[name=alamat]").val();
+        var no_hp = $("input[name=no_hp]").val();
+        var cif = $("input[name=cif]").val();
+        var username = $("input[name=username]").val();
+        var email = $("input[name=email]").val();
+        var password = $("input[name=password]").val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://gade-poin-yuk.com/api/user',
+            data: {
+                nama: nama,
+                alamat: alamat,
+                no_hp: no_hp,
+                cif: cif,
+                username: username,
+                email: email,
+                password: password
+            },
+            dataType: 'json',
+            success : function(data){
+                if(data.status == true){
+                    alert("Anda telah sukses mendaftar akun, silahkan login untuk masuk ke website.");
+                    window.location.href = "login.php";
+                }
+                else{
+                    alert("Anda gagal mendaftar akun, silakan mencoba kembali");
+                }
+            }
+        });
+    });
+</script>
 </html>
