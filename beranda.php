@@ -64,7 +64,7 @@
                 <div class="col-sm-2">
                     <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
                         <br>
-                        <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""><br>
+                        <img src="img/user.png" id="ava-profil" width="60%" height="60%" style="align-content: center;" alt=""><br>
                         <h6 id="nama"></h6>
                         <p><?php echo $_SESSION["cif"] ?></p>
                     </div>
@@ -298,6 +298,7 @@ $(document).ready(function(){
                 $("#nama").html(data.data[0].nama);
                 $("#poin").html(data.data[1].poin);
                 $("#poinrank_jumlahdata").html(data.data[1].poinrank+" / "+data.data[2].jumlahdata);
+                $("#ava-profil").attr('src', data.data[0].ava_url);
             }
         }
     });

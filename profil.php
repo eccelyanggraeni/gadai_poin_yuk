@@ -49,7 +49,7 @@ require_once("auth.php");
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
                 <span class="login100-form-title p-b-33">
                     <?php echo $_SESSION["username"]?>'s Profile<br><br>
-                    <a class="" href="aktivitas.php"><img src="img/user.png" width="25%" height="25%" style="align-content: center;" alt=""></a><br>
+                    <a class="" href="aktivitas.php"><img src="uploads/user.png" id="ava-profil" width="25%" height="25%" style="align-content: center;" alt=""></a><br>
                 </span>
 
                 <table>
@@ -109,6 +109,7 @@ $(document).ready(function(){
                 $("td#alamat").html(data.data[0].alamat);
                 $("td#email").html(data.data[0].email);
                 $("td#no_hp").html(data.data[0].no_hp);
+                $("#ava-profil").attr('src', data.data[0].ava_url);
             }
         }
     });

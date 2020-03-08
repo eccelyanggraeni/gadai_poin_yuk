@@ -30,15 +30,16 @@ require_once("auth.php");
     <div class="limiter">
         <div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-                <form action="" method="" class="login100-form validate-form">
+                <form action="" method="" class="login100-form validate-form" id="profil-form">
                     <span class="login100-form-title p-b-33">
                         Ubah Profil
                         <br>
                         <br>
-                        <img src="img/user.png" width="25%" height="25%" style="align-content: center;" alt=""></img><br>
+                        <img src="img/user.png" id="ava-profil" width="25%" height="25%" style="align-content: center;" alt=""></img><br>
                         <!-- <input class="input100" type="text" name="profile_pic" placeholder="Profile Picture"> -->
                         <!-- <input type="submit" name="choose_file" class="btn" value="Choose File..." /> -->
                     </span>
+                    <input class="input100" id="cif" type="cif" name="cif" placeholder="Cif" value=<?= $_SESSION['cif'] ?> hidden>
                     <div class="wrap-input100 validate-input" data-validate="">
                         <input class="input100" id= "nama" type="text" name="nama" placeholder="Nama">
                         <span class="focus-input100-1"></span>
@@ -70,7 +71,7 @@ require_once("auth.php");
                     </div>
 
                     <div class="container-login100-form-btn m-t-20">
-                        <button class="login100-form-btn submit-profil">Simpan</button>
+                        <button type="submit" class="login100-form-btn submit-profil">Simpan</button>
                         <a href="profil.php" class="login100-form-btn">Batal</a>
                     </div>
                 </form>
@@ -96,34 +97,53 @@ $(document).ready(function(){
                 $("#alamat").val(data.data[0].alamat);
                 $("#email").val(data.data[0].email);
                 $("#no_hp").val(data.data[0].no_hp);
+                $("#ava-profil").attr('src', data.data[0].ava_url);
             }
         }
     });
 
-    $(".submit-profil").click(function(e){
+    $("#profil-form").on('submit', (function(e) {
         e.preventDefault();
-        var cif = <?php echo $_SESSION["cif"] ?>;
-        var nama = $("input[name=nama]").val();
-        var alamat = $("input[name=alamat]").val();
-        var email = $("input[name=email]").val();
-        var no_hp = $("input[name=no_hp]").val();
-        var profpict = $("input[name=img]").change(function(){$(this).val();});
-
         $.ajax({
-            url: 'upload-backend.php',
-            data: {
-                cif: cif,
-                nama: nama,
-                alamat: alamat,
-                email: email,
-                no_hp: no_hp,
-                ava_url: profpict
-            },
-            type: 'post',
+            url: "upload-backend.php",
+            type: "POST",
+            data: new FormData(this),
             contentType: false,
-            processData: false
+            cache: false,
+            processData: false,
+            success: function(data) {
+                if(data == 'invalid'){
+                    alert("gagal");
+                }else{
+                    var cif = <?php echo $_SESSION["cif"] ?>;
+                    var nama = $("#nama").val();
+                    var alamat = $("#alamat").val();
+                    var email = $("#email").val();
+                    var no_hp = $("#no_hp").val();
+                    var profpict = data;
+                    // alert(profpict+cif+nama+alamat+email+no_hp);
+                    $.ajax({
+                        type: 'PUT',
+                        url: 'http://gade-poin-yuk.com/api/user',
+                        data: {
+                            cif: cif,
+                            nama: nama,
+                            alamat: alamat,
+                            email: email,
+                            no_hp: no_hp,
+                            ava_url: profpict
+                        },
+                        dataType: 'json',
+                        success : function(data){
+                            console.log(data);
+                            alert("Anda telah sukses mengubah data profil.");
+                            window.location.href = "profil.php";
+                        }
+                    });
+                }
+            }
         });
-    });
+    }));
 });        
 </script>
 
