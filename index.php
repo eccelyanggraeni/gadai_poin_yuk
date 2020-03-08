@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>    
+<head>
     <title>Gadai Poin Yuk</title>
     <?php include('layout/head.php') ?>
 </head>
 
-
 <body>
-    <?php include('layout/navbar-index.php') ?>
+    <?php include('layout/navbar-index.php') ?> 
 
     <!-- -------------------------Page Content Section------------------------- -->
     <div class="album text-muted" style="background-image: url('img/menu.png'); width: 100%; height: 450px;">

@@ -3,23 +3,23 @@
 
 <head>
     <title>Bantuan</title>
-    <?php include('layout/head.php') ?>
+    <?php include('layout/head.php') ?> 
 </head>
 
 <body>
-    <?php include('layout/navbar-menu.php') ?>
+    <?php include('layout/navbar-menu.php') ?> 
 
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menulong.png); width: 100%; height: 50%;">
-            <h4 style="color: #e9ecef;">Bantuan</h4>
+            <h3 style="color: #e9ecef;">Bantuan</h3>
             <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
 
             <div id="accordion">
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseOne" style="color:#198C09;">
-                            <strong>List 1</strong>
+                            <strong>Daftar 1</strong>
                         </a>
                     </div>
                     <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseTwo" style="color:#198C09;">
-                            <strong>List 2</strong>
+                            <strong>Daftar 2</strong>
                         </a>
                     </div>
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -51,7 +51,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseThree" style="color:#198C09;">
-                            <strong>List 3</strong>
+                            <strong>Daftar 3</strong>
                         </a>
                     </div>
                     <div id="collapseThree" class="collapse" data-parent="#accordion">
@@ -66,7 +66,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseFour" style="color:#198C09;">
-                            <strong>List 4</strong>
+                            <strong>Daftar 4</strong>
                         </a>
                     </div>
                     <div id="collapseFour" class="collapse" data-parent="#accordion">
