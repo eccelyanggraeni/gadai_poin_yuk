@@ -115,7 +115,8 @@
                 if(data.status == true){
 					console.log("sukses", data.data[0].cif);
                     // alert("Anda telah sukses login.");
-					$.post('updatesession.php', {cif: data.data[0].cif, username: data.data[0].username})
+					$.post('updatesession.php', {cif: data.data[0].cif, 
+												 username: data.data[0].username});
                     window.location.href = "beranda.php";
                 }
                 else{
