@@ -169,10 +169,10 @@
                                     <div class="carousel-content">
                                         <h4>100 poin</h4>
                                     </div>
+                                </div>
 
-
-                                    <!-- Modal Voucher Anda -->
-                                    <div id="detail_myVoucher" class="modal fade" role="dialog">
+                                <!-- Modal Voucher Anda -->
+                                <div id="detail_myVoucher" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
@@ -191,7 +191,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
                                     <div class="carousel-content">
@@ -231,8 +231,10 @@
                                     <div class="carousel-content">
                                         <h4>100 poin</h4>
                                     </div>
-                                    <!-- Modal Voucher Redeemable -->
-                                    <div id="detail_myVoucher" class="modal fade" role="dialog">
+                                </div>
+
+                                <!-- Modal Voucher Redeemable -->
+                                <div id="detail_myVoucher" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
@@ -252,7 +254,6 @@
                                         </div>
                                     </div>
 
-                                </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
                                     <div class="carousel-content">
