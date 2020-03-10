@@ -157,7 +157,7 @@
 
                     <div class="container-login100-form-btn m-t-20">
                         <input type="submit" name="register" class="login100-form-btn" value="Daftar" />
-                        <button onclick="window.location.href='index.php';" class="login100-form-btn">Batal</button>
+                        <a href="index.php" class="login100-form-btn">Batal</a>
                     </div>
                 </form>
 
