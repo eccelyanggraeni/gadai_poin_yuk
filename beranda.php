@@ -1,6 +1,5 @@
-
 <?php 
-    session_start();
+    require_once("auth.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +8,10 @@
     <title>Beranda</title> 
     <?php include('layout/head.php') ?>   
     <style>
+        .jumbotron {
+            padding: 3rem 3rem;
+        }
+
         .carousel-item {
             height: 250px;
         }
@@ -28,7 +31,7 @@
             color: black;
             border-radius: 5px;
             /* text-shadow: 0 1px 2px rgba(0, 0, 0, .6); */
-            background-color: whitesmoke;
+            background-color: #e9ecefsmoke;
             color: grey;
 
         }
@@ -50,6 +53,111 @@
             color: black;
             display: block
         }
+
+        #profil-ava {
+            background-color: #e9ecef; 
+            width: 200px; 
+            height: 200px; 
+            border-radius: 10px; 
+            text-align: center;
+        }
+
+        #profil-ava h6.nama {
+            margin-top: 10px;
+        }
+
+        #jumlah-poin {
+            background-color: #e9ecef; 
+            width: auto; 
+            height: 200px; 
+            border-radius: 10px;
+        }
+
+        #jumlah-poin .poin-detail{
+            padding: 20px;
+        }
+
+        #jumlah-poin .poin-detail h1{
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #8b8878; 
+        }
+
+        #jumlah-poin .poin-detail p{
+            text-align: center;
+            font-size: 11px;
+            font-family: 'Dosis', sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        #rank {
+            background-color: #e9ecef; 
+            width: auto; 
+            height: 200px; 
+            border-radius: 10px;
+        }
+
+        #rank .rank-detail{
+            padding: 20px;
+        }
+
+        #rank .rank-detail h1{
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #8b8878;
+        }
+
+        #konversi-poin{
+            background-color: #e9ecef; 
+            width: auto; 
+            height: 200px; 
+            border-radius: 10px;
+        }
+
+        #konversi-poin .konversi-poin-form{
+            padding: 25px;
+        }
+        
+        #konversi-poin .konversi-poin-form form{
+            margin-top: 15px;
+        }
+
+        #konversi-poin .konversi-poin-form input{
+            width: 258px;
+            font-family: 'Dosis', sans-serif;
+            text-align: center;
+        }
+
+        #konversi-poin .konversi-poin-form button{
+            margin-left: 10px;
+            font-family: 'Dosis', sans-serif;
+        }
+
+        .title-beranda{
+            color: #e9ecef;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: normal;
+            letter-spacing: -1px;
+        }
+
+        #profil-ava img.ava-profil{
+            border-radius: 50%;
+        }
+
+        #profil-ava h6.nama{
+            color: #8b8878;
+            font-weight: bold;
+        }
+
+        h5{
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: -1px;
+            color: #8b8878; 
+        }
     </style>
 </head>
 
@@ -59,36 +167,38 @@
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
-            <h3 style="color: #e9ecef;">Beranda</h3>
-            <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
+            <h3 class="title-beranda">Beranda</h3>
+            <div class="dropdown-divider" style="border: 1px solid #e9ecef;"></div><br>
             <div class="row">
                 <div class="col-sm-2">
-                    <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
+                    <div id="profil-ava">
                         <br>
-                        <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""><br>
-                        <h6><?php echo $_SESSION["username"] ?></h6>
+                        <img src="" class="ava-profil" width="60%" height="60%" style="align-content: center;" alt=""><br>
+                        <h6 class="nama"></h6>
                         <p><?php echo $_SESSION["cif"] ?></p>
                     </div>
                 </div>
+
                 <div class="col-sm-3">
-                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
-                        <div style="padding: 25px;">
+                    <div id="jumlah-poin">
+                        <div class="poin-detail">
                             <h5>Poin Anda</h5><br>
-
-                            <h1>490 poin</h1><br>
-                            <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif">Poin akan direset ulang pada tanggal 31 Desember 2020</p>
+                            <h1 class="poin"></h1><br>
+                            <p>*Poin akan direset ulang pada tanggal 31 Desember 2020</p>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col-sm-3" data-toggle="modal" data-target="#detailPeringkat">
-                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
-                        <div style="padding: 25px;">
+                    <div id="rank" >
+                        <div class="rank-detail">
                             <h5>Peringkat Anda</h5><br>
-                            <h1>1 / 5120</h1><br>
+                            <h1 class="poinrank_jumlahdata"></h1><br>
                         </div>
                     </div>
                 </div>
+
+                
 
                 <!-- Modal Peringkat -->
                 <div id="detailPeringkat" class="modal fade" role="dialog">
@@ -125,34 +235,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4" data-toggle="modal" data-target="#detailAktivitas">
-                    <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
-                        <div style="padding: 25px;">
-                            <h5>Aktivitas Anda</h5><br>
-                            <h1>Play the Game !</h1><br>
+
+                <div class="col-sm-4">
+                    <div id="konversi-poin">
+                        <div class="konversi-poin-form">
+                            <h5>Tukar Poinmu Dari Transaksi Disini!</h5><br>
+                            <form method="" action="" class="login100-form validate-form form-inline" id="form-poin">
+                                <input type="text" class="form-control" name="poin" id="poin" placeholder="Nomer Transaksi"/><br>
+                                <button class="submit-poin btn btn-success">Submit</button><br><br>
+                            </form>
+                            <!-- <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#detailAktivitas">Tukar Poin</button><br> -->
                         </div>
                     </div>
                 </div>
 
-                <!-- Modal Aktivitas -->
-                <div id="detailAktivitas" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Daftar Aktivitas</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, rem? Error laboriosam quos, labore eos non est commodi eveniet nemo ab magni, facere tempora fugit optio. Modi ea tempora dolor?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
             </div>
             <div class="row">
                 <div class="col-sm"><br>
@@ -285,4 +382,55 @@
 
 <?php include('layout/footer.php') ?>
 
+<script>
+$(document).ready(function(){
+    var cif = <?php echo $_SESSION["cif"] ?>;
+    $.ajax({
+        type: 'GET',
+        url: 'http://gade-poin-yuk.com/api/user',
+        data: {cif: cif},
+        dataType: 'json',
+        success : function(data){
+            console.log(data.data[0]);
+            if(data.status == true){
+                $(".nama").html(data.data[0].nama);
+                $(".poin").html(data.data[1].poin);
+                $(".poinrank_jumlahdata").html(data.data[1].poinrank+" / "+data.data[2].jumlahdata);
+                if(data.data[0].ava_url === ""){
+                    $(".ava-profil").attr('src', 'img/user.png');
+                }else{
+                    $(".ava-profil").attr('src', data.data[0].ava_url);
+                }
+            }
+        }
+    });
+
+    $(".submit-poin").click(function(e){
+        e.preventDefault();
+
+        var no_transaksi = $("input[name=poin]").val();
+        var cif = <?php echo $_SESSION["cif"] ?>;
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://gade-poin-yuk.com/api/konversi_poin',
+            data: {
+                no_transaksi: no_transaksi,
+                cif: cif
+            },
+            dataType: 'json',
+            success : function(data){
+                if(data.status == true){
+                    console.log(data.data);
+                    alert("Anda telah sukses menambah poin.");
+                    window.location.href = "beranda.php";
+                }
+                else{
+                    alert("Anda gagal menambah poin.");
+                }
+            }
+        });
+    });  
+});      
+</script>
 </html>

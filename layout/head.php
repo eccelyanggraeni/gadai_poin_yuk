@@ -32,8 +32,13 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+</style>
+
 <!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script> -->
 <!--===============================================================================================-->
 <script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->

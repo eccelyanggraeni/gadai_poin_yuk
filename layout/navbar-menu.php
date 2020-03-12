@@ -1,3 +1,9 @@
+<style>
+    #navbarNav a{
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: -1px;
+    }
+</style>
 <!-- Navbar Header Section -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="beranda.php">

@@ -1,41 +1,24 @@
-<?php
-// require_once("config.php");
+<style>
+	.login100-form-title{
+		font-family: 'Open Sans', sans-serif;
+		letter-spacing: -2px;
+	}
 
-// $show_warning = false;
+	.text-center {
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: -30px;
+	}
 
-// if (isset($_POST['login'])) {
+	form input{
+		font-family: 'Dosis', sans-serif;
+		text-align: center;
+	}
 
-// 	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-// 	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-
-// 	$sql = "SELECT * FROM user WHERE email=:email";
-// 	$stmt = $db->prepare($sql);
-
-// 	// bind parameter ke query
-// 	$params = array(
-// 		":email" => $email
-// 	);
-
-// 	$stmt->execute($params);
-
-// 	$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// 	// jika user terdaftar
-// 	if ($user) {
-// 		// verifikasi password
-// 		if (password_verify($password, $user["password"])) {
-// 			// buat Session
-// 			session_start();
-// 			$_SESSION["user"] = $user;
-// 			// login sukses, alihkan ke halaman timeline
-// 			header("Location: beranda.php");
-// 			echo "Password Verified !";
-// 			$show_warning = false;
-// 		}
-// 		$show_warning = true;
-// 	}
-// }
-?>
+	#form-login .login-submit button{
+		font-family: 'Dosis', sans-serif;
+	}
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +32,7 @@
 
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-50">
 				<form action="" method="" class="login100-form validate-form" id="form-login">
 					<span class="login100-form-title p-b-33">
 						Masuk Akun
@@ -115,7 +98,8 @@
                 if(data.status == true){
 					console.log("sukses", data.data[0].cif);
                     // alert("Anda telah sukses login.");
-					$.post('updatesession.php', {cif: data.data[0].cif, username: data.data[0].username})
+					$.post('updatesession.php', {cif: data.data[0].cif, 
+												 username: data.data[0].username});
                     window.location.href = "beranda.php";
                 }
                 else{

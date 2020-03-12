@@ -26,7 +26,7 @@
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
             <h1 style="color: #e9ecef;">Tukar Poin</h1>
-            <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
+            <div class="dropdown-divider" style="border: 1px solid #e9ecef;"></div><br>
             <div class="row">
                 <div class="col-sm-2">
                     <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
