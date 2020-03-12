@@ -1,6 +1,5 @@
-
 <?php 
-    session_start();
+    require_once("auth.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,8 +64,8 @@
                 <div class="col-sm-2">
                     <div style="background-color: #e9ecef; width: 200px; height: 200px; border-radius: 10px; text-align: center;">
                         <br>
-                        <img src="img/user.png" width="60%" height="60%" style="align-content: center;" alt=""><br>
-                        <h6><?php echo $_SESSION["username"] ?></h6>
+                        <img src="img/user.png" id="ava-profil" width="60%" height="60%" style="align-content: center;" alt=""><br>
+                        <h6 id="nama"></h6>
                         <p><?php echo $_SESSION["cif"] ?></p>
                     </div>
                 </div>
@@ -75,7 +74,7 @@
                         <div style="padding: 25px;">
                             <h5>Poin Anda</h5><br>
 
-                            <h1>490 poin</h1><br>
+                            <h1 id="poin"></h1><br>
                             <p style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif">Poin akan direset ulang pada tanggal 31 Desember 2020</p>
                         </div>
                     </div>
@@ -85,7 +84,7 @@
                     <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
                         <div style="padding: 25px;">
                             <h5>Peringkat Anda</h5><br>
-                            <h1>1 / 5120</h1><br>
+                            <h1 id="poinrank_jumlahdata"></h1><br>
                         </div>
                     </div>
                 </div>
@@ -125,11 +124,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4" data-toggle="modal" data-target="#detailAktivitas">
+                <div class="col-sm-4">
                     <div style="background-color: #e9ecef; width: auto; height: 200px; border-radius: 10px;">
                         <div style="padding: 25px;">
-                            <h5>Aktivitas Anda</h5><br>
-                            <h1>Play the Game !</h1><br>
+                            <h5>Tukar Poinmu Dari Transaksi Disini!</h5><br>
+                            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#detailAktivitas">Tukar Poin</button><br>
                         </div>
                     </div>
                 </div>
@@ -141,14 +140,14 @@
                         <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Daftar Aktivitas</h4>
+                                <h4 class="modal-title">Tukar Poin Dari Transaksi</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, rem? Error laboriosam quos, labore eos non est commodi eveniet nemo ab magni, facere tempora fugit optio. Modi ea tempora dolor?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <form method="" action="" class="login100-form validate-form" id="form-poin">
+                                    <input type="text" class="form-control" name="poin" id="poin" placeholder="Transaction Number"/><br>
+                                    <button class="submit-poin btn btn-success">Submit</button><br><br>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -170,10 +169,10 @@
                                     <div class="carousel-content">
                                         <h4>100 poin</h4>
                                     </div>
+                                </div>
 
-
-                                    <!-- Modal Voucher Anda -->
-                                    <div id="detail_myVoucher" class="modal fade" role="dialog">
+                                <!-- Modal Voucher Anda -->
+                                <div id="detail_myVoucher" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
@@ -192,7 +191,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
                                     <div class="carousel-content">
@@ -232,8 +231,10 @@
                                     <div class="carousel-content">
                                         <h4>100 poin</h4>
                                     </div>
-                                    <!-- Modal Voucher Redeemable -->
-                                    <div id="detail_myVoucher" class="modal fade" role="dialog">
+                                </div>
+
+                                <!-- Modal Voucher Redeemable -->
+                                <div id="detail_myVoucher" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
@@ -253,7 +254,6 @@
                                         </div>
                                     </div>
 
-                                </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="img/promo1.jpeg" alt="Second slide" height="40%">
                                     <div class="carousel-content">
@@ -285,4 +285,51 @@
 
 <?php include('layout/footer.php') ?>
 
+<script>
+$(document).ready(function(){
+    var cif = <?php echo $_SESSION["cif"] ?>;
+    $.ajax({
+        type: 'GET',
+        url: 'http://gade-poin-yuk.com/api/user',
+        data: {cif: cif},
+        dataType: 'json',
+        success : function(data){
+            console.log(data.data[0]);
+            if(data.status == true){
+                $("#nama").html(data.data[0].nama);
+                $("#poin").html(data.data[1].poin);
+                $("#poinrank_jumlahdata").html(data.data[1].poinrank+" / "+data.data[2].jumlahdata);
+                $("#ava-profil").attr('src', data.data[0].ava_url);
+            }
+        }
+    });
+
+    $(".submit-poin").click(function(e){
+        e.preventDefault();
+
+        var no_transaksi = $("input[name=poin]").val();
+        var cif = <?php echo $_SESSION["cif"] ?>;
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://gade-poin-yuk.com/api/konversi_poin',
+            data: {
+                no_transaksi: no_transaksi,
+                cif: cif
+            },
+            dataType: 'json',
+            success : function(data){
+                if(data.status == true){
+                    console.log(data.data);
+                    alert("Anda telah sukses menambah poin.");
+                    window.location.href = "beranda.php";
+                }
+                else{
+                    alert("Anda gagal menambah poin.");
+                }
+            }
+        });
+    });  
+});      
+</script>
 </html>

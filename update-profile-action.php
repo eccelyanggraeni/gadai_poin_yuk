@@ -1,6 +1,8 @@
 <?php 
 require_once("auth.php");
-// include('config.php');
+//  include('config.php');
+
+// $mysqli = "";
 
 if (isset($_POST['update_profile'])) {
     // $user = $_GET['user'];

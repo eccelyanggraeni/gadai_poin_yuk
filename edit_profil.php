@@ -1,40 +1,5 @@
 <?php
 require_once("auth.php");
-// include("config.php");
-
-// if (isset($_POST['but_upload'])) {
-
-//     $name = $_FILES['file']['name'];
-//     $target_dir = "upload/";
-//     $target_file = $target_dir . basename($_FILES["file"]["name"]);
-
-//     // Select file type
-//     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-//     // Valid file extensions
-//     $extensions_arr = array("jpg", "jpeg", "png", "gif");
-
-//     // Check extension
-//     if (in_array($imageFileType, $extensions_arr)) {
-
-//         // Convert to base64 
-//         $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
-//         $image = 'data:image/' . $imageFileType . ';base64,' . $image_base64;
-//         // Insert record
-//         $query = "insert into user(profile_pic) values('" . $image . "')";
-//         mysqli_query($con, $query);
-
-//         // Upload file
-//         move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
-//     }
-// }
-// if (isset($_GET['user'])) {
-//     $user = $_GET['user'];
-//     $get_user = $mysqli->query("SELECT * FROM users WHERE username = '$user'");
-//     $user_data = $get_user->fetch_assoc();
-// } else {
-//     header("Location: edit.php");
-// }
 ?>
 
 
@@ -42,7 +7,7 @@ require_once("auth.php");
 <html lang="en">
 
 <head>
-    <title><?php echo $_SESSION["user"]["username"]?>'s Profile Settings</title>
+    <title>Ubah Profil</title>
     <?php include('layout/head.php') ?> 
     <style>
         .carousel-item {
@@ -65,42 +30,49 @@ require_once("auth.php");
     <div class="limiter">
         <div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-                <form action="update-profile-action.php" method="POST" class="login100-form validate-form">
+                <form action="" method="" class="login100-form validate-form" id="profil-form">
                     <span class="login100-form-title p-b-33">
                         Ubah Profil
                         <br>
                         <br>
-                        <img src="img/user.png" width="25%" height="25%" style="align-content: center;" alt=""></img><br>
+                        <img src="img/user.png" id="ava-profil" width="25%" height="25%" style="align-content: center;" alt=""></img><br>
                         <!-- <input class="input100" type="text" name="profile_pic" placeholder="Profile Picture"> -->
                         <!-- <input type="submit" name="choose_file" class="btn" value="Choose File..." /> -->
                     </span>
+                    <input class="input100" id="cif" type="cif" name="cif" placeholder="Cif" value=<?= $_SESSION['cif'] ?> hidden>
                     <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="nama" placeholder="Nama" value="<?php echo $_SESSION["user"]['nama'] ?>">
+                        <input class="input100" id= "nama" type="text" name="nama" placeholder="Nama">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="alamat" placeholder="Alamat" value="<?php echo $_SESSION["user"]['alamat'] ?>">
+                        <input class="input100" id= "alamat" type="text" name="alamat" placeholder="Alamat" >
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="E-mail" value="<?php echo $_SESSION["user"]['email'] ?>">
+                        <input class="input100" id= "email" type="email" name="email" placeholder="E-mail">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="no_hp" placeholder="Nomor Selular" value="<?php echo $_SESSION["user"]['no_hp'] ?>">
+                        <input class="input100" id= "no_hp" type="text" name="no_hp" placeholder="Nomor Selular">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <p>Select photo profile: </p><input type="file" id="img" name="img" accept="image/*">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
 
                     <div class="container-login100-form-btn m-t-20">
-                        <input type="submit" name="update_profile" class="login100-form-btn" value="Ubah Profil" />
-                        <button onclick="history.back();" class="login100-form-btn">Batal</button>
+                        <button type="submit" class="login100-form-btn submit-profil">Simpan</button>
+                        <a href="profil.php" class="login100-form-btn">Batal</a>
                     </div>
                 </form>
             </div>
@@ -109,5 +81,70 @@ require_once("auth.php");
 </body>
 
 <?php include('layout/footer.php') ?>
+
+<script>
+$(document).ready(function(){
+    var cif = <?php echo $_SESSION["cif"] ?>;
+    $.ajax({
+        type: 'GET',
+        url: 'http://gade-poin-yuk.com/api/user',
+        data: {cif: cif},
+        dataType: 'json',
+        success : function(data){
+            console.log(data.data[0]);
+            if(data.status == true){
+                $("#nama").val(data.data[0].nama);
+                $("#alamat").val(data.data[0].alamat);
+                $("#email").val(data.data[0].email);
+                $("#no_hp").val(data.data[0].no_hp);
+                $("#ava-profil").attr('src', data.data[0].ava_url);
+            }
+        }
+    });
+
+    $("#profil-form").on('submit', (function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "upload-backend.php",
+            type: "POST",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                if(data == 'invalid'){
+                    alert("gagal");
+                }else{
+                    var cif = <?php echo $_SESSION["cif"] ?>;
+                    var nama = $("#nama").val();
+                    var alamat = $("#alamat").val();
+                    var email = $("#email").val();
+                    var no_hp = $("#no_hp").val();
+                    var profpict = data;
+                    // alert(profpict+cif+nama+alamat+email+no_hp);
+                    $.ajax({
+                        type: 'PUT',
+                        url: 'http://gade-poin-yuk.com/api/user',
+                        data: {
+                            cif: cif,
+                            nama: nama,
+                            alamat: alamat,
+                            email: email,
+                            no_hp: no_hp,
+                            ava_url: profpict
+                        },
+                        dataType: 'json',
+                        success : function(data){
+                            console.log(data);
+                            alert("Anda telah sukses mengubah data profil.");
+                            window.location.href = "profil.php";
+                        }
+                    });
+                }
+            }
+        });
+    }));
+});        
+</script>
 
 </html>
