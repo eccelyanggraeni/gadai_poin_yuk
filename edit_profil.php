@@ -98,15 +98,6 @@ require_once("auth.php");
                         <span class="focus-input100-2"></span>
                     </div>
 
-                    <!-- <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="username" placeholder="Username" value="
-                        
-                        php echo $_SESSION["user"]['username']">
-
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
-                    </div> -->
-
                     <div class="container-login100-form-btn m-t-20">
                         <input type="submit" name="update_profile" class="login100-form-btn" value="Ubah Profil" />
                         <button onclick="history.back();" class="login100-form-btn">Batal</button>
