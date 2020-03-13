@@ -79,13 +79,11 @@ require_once("auth.php");
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
-
                     <div class="wrap-input100 validate-input" data-validate="">
                         <p>Pilih foto profil (Max 1 mb) : </p><input type="file" id="ava-img" name="ava-img" accept="image/*">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
-
                     <div class="container-login100-form-btn m-t-20">
                         <button type="submit" class="login100-form-btn submit-profil">Simpan</button>
                         <a href="profil.php" class="login100-form-btn">Batal</a>
