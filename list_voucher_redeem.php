@@ -56,6 +56,9 @@ require_once("auth.php");
                 width: 100%;
                 margin-bottom: 10px;
             }
+            .card{
+                margin:10px
+            }
         </style>
     </head>
 
@@ -86,8 +89,7 @@ require_once("auth.php");
             success : function(data){            
                 console.log(data.data);
                 for(i=0;i<data.data.length;i++){
-                    cards.push($("<div class='card col-md-3'>"
-                            // +"<img class='card-img-top' src='#' alt='Card image cap'>"
+                    cards.push($("<div class='card col-sm-3'>"
                             +"<div class='card-body'>"
                             +"<h5 class='card-title'>"+data.data[i].nama_voucher+"</h5>"
                             +"<div class='card-text'>"
@@ -96,23 +98,17 @@ require_once("auth.php");
                             +"</p></div>"
                             +"<p class='voucher-expired'>Masa Berlaku : <br>"+data.data[i].valid_start+" - "+data.data[i].valid_end
                             +"</p></div>"
-                            +"<button class='btn btn-success' id='btn-redeem' data='"+data.data[i].kode_voucher+"'>Redeem</button>"
+                            +"<button class='btn btn-success btn-redeem' data='"+data.data[i].kode_voucher+"'>Redeem</button>"
                             +"</div>"
                             +"</div>"));
                     // $("#btn-redeem").trigger('click');
-
                 }
                 $("#voucher").append(cards);
             }
         });
-    });
-    $(document).ajaxComplete(function(event, xhr, settings) {
-        console.log(xhr.responseText);
-        console.log(event);
-        console.log(settings);
-        $("#btn-redeem").on('click', function(){
+        $("#voucher").on('click','.btn-redeem', function(){
             var cif = <?php echo $_SESSION["cif"] ?>;
-            var kode_voucher = $("#btn-redeem").attr('data');
+            var kode_voucher = $(this).attr('data');
             $.ajax({
                 type: 'POST',
                 url: 'http://gade-poin-yuk.com/api/transaksitukar_poin',
@@ -120,13 +116,37 @@ require_once("auth.php");
                 dataType: 'json',
                 success : function(data){
                     if(data.status == true){
-                        alert("sukses");
+                        alert(data.message);
                     }else{
-                        alert("gagal");
+                        alert(data.message);
                     }
                 }
-            });   
+            });
         });
+
     });
+    // $(document).ajaxComplete(function(event, xhr, settings) {
+    //     console.log(xhr.responseText);
+    //     console.log(event);
+    //     console.log(settings);
+    //     $("#btn-redeem").index().on('click', function(e){
+    //         e.preventDefault();
+    //         var cif = <?php echo $_SESSION["cif"] ?>;
+    //         var kode_voucher = $("#btn-redeem").attr('data');
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: 'http://gade-poin-yuk.com/api/transaksitukar_poin',
+    //             data: {cif: cif, kode_voucher: kode_voucher},
+    //             dataType: 'json',
+    //             success : function(data){
+    //                 if(data.status == true){
+    //                     alert("sukses");
+    //                 }else{
+    //                     alert("gagal");
+    //                 }
+    //             }
+    //         });   
+    //     });
+    // });
     </script>
 </html>

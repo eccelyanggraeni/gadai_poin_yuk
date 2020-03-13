@@ -96,14 +96,13 @@
             dataType: 'json',
             success : function(data){
                 if(data.status == true){
-					console.log("sukses", data.data[0].cif);
-                    // alert("Anda telah sukses login.");
+                    alert(data.message);
 					$.post('updatesession.php', {cif: data.data[0].cif, 
 												 username: data.data[0].username});
                     window.location.href = "beranda.php";
                 }
                 else{
-                    $("#show-warning").html("<span style='color:#F00; text-align:center;'>* Invalid username or password.</span>");
+                    alert(data.message);
                 }
             }
         });

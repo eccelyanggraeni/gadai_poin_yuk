@@ -128,11 +128,11 @@
             dataType: 'json',
             success : function(data){
                 if(data.status == true){
-                    alert("Anda telah sukses mendaftar akun, silahkan login untuk masuk ke website.");
+                    alert(data.message);
                     window.location.href = "login.php";
                 }
                 else{
-                    alert("Anda gagal mendaftar akun, silakan mencoba kembali");
+                    alert(data.message);
                 }
             }
         });

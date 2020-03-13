@@ -133,7 +133,7 @@ $(document).ready(function(){
             processData: false,
             success: function(data) {
                 if(data == 'invalid'){
-                    alert("gagal");
+                    alert("Gagal memperbaharui profil.");
                 }else{
                     var cif = <?php echo $_SESSION["cif"] ?>;
                     var nama = $("#nama").val();
@@ -155,9 +155,12 @@ $(document).ready(function(){
                         },
                         dataType: 'json',
                         success : function(data){
-                            console.log(data);
-                            alert("Anda telah sukses mengubah data profil.");
-                            window.location.href = "profil.php";
+                            if(data.status == true){
+                                alert(data.message);
+                                window.location.href = "profil.php";
+                            }else{
+                                alert(data.message);
+                            }                            
                         }
                     });
                 }

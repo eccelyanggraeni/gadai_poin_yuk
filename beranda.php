@@ -268,10 +268,9 @@ require_once("auth.php");
 
 
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm"><br>
-                    <h4 style="color: #e9ecef;">Voucher Anda</h4>
-                    <a href="#" class="btn btn-success">Lihat Voucher</a>
+                    <h4 style="color: #e9ecef;">Voucher Anda</h4><br>
                     <div style="background-color:#e9ecef;">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding: 0px">
                             <ol class="carousel-indicators">
@@ -310,7 +309,7 @@ require_once("auth.php");
                         </div>
                     </div>
                 </div><br>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
@@ -367,11 +366,10 @@ require_once("auth.php");
                 dataType: 'json',
                 success: function(data) {
                     if (data.status == true) {
-                        console.log(data.data);
-                        alert("Anda telah sukses menambah poin.");
+                        alert(data.message);
                         window.location.href = "beranda.php";
                     } else {
-                        alert("Anda gagal menambah poin.");
+                        alert(data.message);
                     }
                 }
             });
