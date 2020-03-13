@@ -1,45 +1,26 @@
-<?php
-
-require_once("config.php");
-
-if (isset($_POST['register'])) {
-
-    // filter data yang diinputkan
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    // enkripsi password
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-
-
-    // menyiapkan query
-    $sql = "INSERT INTO users (name, username, email, password) 
-            VALUES (:name, :username, :email, :password)";
-    $stmt = $db->prepare($sql);
-
-    // bind parameter ke query
-    $params = array(
-        ":name" => $name,
-        ":username" => $username,
-        ":password" => $password,
-        ":email" => $email
-    );
-
-    // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
-
-    // jika query simpan berhasil, maka user sudah terdaftar
-    // maka alihkan ke halaman login
-    if ($saved) header("Location: login.php");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Register - Gadai Poin Yuk</title>
-    <?php include('layout/head.php') ?>
+    <?php include('layout/head.php') ?> 
+    <style>
+        .login100-form-title{
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: -2px;
+        }
+
+        .text-center {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: -30px;
+        }
+
+        form input{
+            font-family: 'Dosis', sans-serif;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,15 +28,37 @@ if (isset($_POST['register'])) {
     <div class="limiter">
         <div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-                <form action="" method="POST" class="login100-form validate-form">
+                <form action="" method="" class="login100-form validate-form" id="form-register">
                     <span class="login100-form-title p-b-33">
-                        Account Register
+                        Daftar Akun
                     </span>
                     <div class="wrap-input100 validate-input" data-validate="">
-                        <input class="input100" type="text" name="name" placeholder="Name">
+                        <input class="input100" type="text" name="nama" placeholder="Nama">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
+
+                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="alamat" placeholder="Alamat">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="no_hp" placeholder="Nomor Selular">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="">
+                        <input class="input100" type="text" name="cif" placeholder="Nomor CIF">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <!-- ---------------------BRAND NEW TEXT FIELD FOR REGISTER--------------------- -->
 
                     <div class="wrap-input100 validate-input" data-validate="">
                         <input class="input100" type="text" name="username" placeholder="Username">
@@ -64,7 +67,7 @@ if (isset($_POST['register'])) {
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <input class="input100" type="text" name="email" placeholder="E-mail">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
@@ -76,25 +79,63 @@ if (isset($_POST['register'])) {
                     </div>
 
                     <div class="container-login100-form-btn m-t-20">
-                        <input type="submit" name="register" class="login100-form-btn" value="Sign Up" />
-                        <button onclick="history.back();" class="login100-form-btn">Cancel </button>
+                        <input type="submit" name="register" class="login100-form-btn" value="Daftar" />
+                        <button onclick="window.location.href='index.php';" class="login100-form-btn">Batal</button>
                     </div>
                 </form>
+
+
+                
                 <div class="text-center">
                     <span class="txt1">
-                        Already have an account?
+                        Sudah memiliki Akun?
                     </span>
 
                     <a href="login.php" class="txt2 hov1">
-                        Sign in
+                        Masuk
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 
 <?php include('layout/footer.php') ?>
 
+<script>
+    $("#form-register").submit(function(e){
+        e.preventDefault();
+        var nama = $("input[name=nama]").val();
+        var alamat = $("input[name=alamat]").val();
+        var no_hp = $("input[name=no_hp]").val();
+        var cif = $("input[name=cif]").val();
+        var username = $("input[name=username]").val();
+        var email = $("input[name=email]").val();
+        var password = $("input[name=password]").val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://gade-poin-yuk.com/api/user',
+            data: {
+                nama: nama,
+                alamat: alamat,
+                no_hp: no_hp,
+                cif: cif,
+                username: username,
+                email: email,
+                password: password
+            },
+            dataType: 'json',
+            success : function(data){
+                if(data.status == true){
+                    alert("Anda telah sukses mendaftar akun, silahkan login untuk masuk ke website.");
+                    window.location.href = "login.php";
+                }
+                else{
+                    alert("Anda gagal mendaftar akun, silakan mencoba kembali");
+                }
+            }
+        });
+    });
+</script>
 </html>

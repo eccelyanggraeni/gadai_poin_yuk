@@ -1,3 +1,9 @@
+<style>
+    #navbarNav a{
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: -1px;
+    }
+</style>
 <!-- -------------------------Navbar Header Section------------------------- -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.php">
@@ -9,7 +15,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
                 <ul class="nav nav-pills">
-
                     <li class="nav-item">
                         <a class="nav-link" href="login.php"><strong>Masuk</strong></a>
                     </li>

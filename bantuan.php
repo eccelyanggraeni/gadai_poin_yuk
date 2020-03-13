@@ -1,82 +1,38 @@
+<?php
+require_once("auth.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Bantuan</title>
-    <?php include('layout/head.php') ?>
+    <?php include('layout/head.php') ?> 
+    <style>
+        .title-bantuan{
+            color: #e9ecef;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: normal;
+            letter-spacing: -1px;
+        }
+
+        .jumbotron{
+            padding: 3rem 3rem!important;
+        }
+    </style>
 </head>
 
 <body>
-    <?php include('layout/navbar-menu.php') ?>
+    <?php include('layout/navbar-menu.php') ?> 
 
     <!-- Page Content -->
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
         <div class="jumbotron" style="background-image: url(img/menulong.png); width: 100%; height: 50%;">
-            <h4 style="color: #e9ecef;">Bantuan</h4>
-            <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
+            <h3 class="title-bantuan">Bantuan</h3>
+            <div class="dropdown-divider" style="border: 1px solid #e9ecef;"></div><br>
 
             <div id="accordion">
-                <div class="card">
-                    <div class="card-header">
-                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseOne" style="color:#198C09;">
-                            <strong>List 1</strong>
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                        <div class="card-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam maiores cumque accusamus,
-                            optio
-                            dolorem possimus nihil nisi assumenda? Eaque, nostrum voluptas! Perspiciatis iure labore
-                            ratione
-                            qui beatae placeat repellendus cupiditate?
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="card">
-                    <div class="card-header">
-                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseTwo" style="color:#198C09;">
-                            <strong>List 2</strong>
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sequi omnis a impedit maiores
-                            dolorem magni? Repellat magni maiores dicta consequuntur repellendus aspernatur numquam? Aut
-                            blanditiis vero pariatur doloribus nemo.
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="card">
-                    <div class="card-header">
-                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseThree" style="color:#198C09;">
-                            <strong>List 3</strong>
-                        </a>
-                    </div>
-                    <div id="collapseThree" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi culpa omnis tempore assumenda
-                            dolor! Illo, ex? Ullam veniam qui temporibus. Nobis, officiis cupiditate illum pariatur
-                            voluptatibus consequatur harum beatae quae!
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="card">
-                    <div class="card-header">
-                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseFour" style="color:#198C09;">
-                            <strong>List 4</strong>
-                        </a>
-                    </div>
-                    <div id="collapseFour" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi culpa omnis tempore assumenda
-                            dolor! Illo, ex? Ullam veniam qui temporibus. Nobis, officiis cupiditate illum pariatur
-                            voluptatibus consequatur harum beatae quae!
-                        </div>
-                    </div>
-                </div>
+                
+                
             </div>
         </div>
     </div>
@@ -84,4 +40,32 @@
 
 <?php include('layout/footer.php') ?>
 
+<script>
+    $(document).ready(function(){
+        var bantuan = [];
+        $.ajax({
+            type: 'GET',
+            url: 'http://gade-poin-yuk.com/api/bantuan',
+            dataType: 'json',
+            success : function(data){            
+                console.log(data.data);
+                for(i=0;i<data.data.length;i++){
+                    bantuan.push($("<div class='card'>"
+                    +"<div class='card-header'>"
+                        +"<a class='nav-link dropdown-toggle'" +"data-toggle='collapse' href='#collapse"+i+"'" +"style='color:#198C09;'>"
+                            +"<strong>"+data.data[i].pertanyaan+"</strong>"
+                        +"</a>"
+                    +"</div>"
+                    +"<div id='collapse"+i+"' class='collapse show'" +"data-parent='#accordion'>"
+                        +"<div class='card-body'>"
+                        +data.data[i].jawaban
+                        +"</div>"
+                    +"</div>"
+                +"</div></br>"));
+                }
+                $("#accordion").append(bantuan);
+            }
+        });
+    });
+</script>
 </html>
