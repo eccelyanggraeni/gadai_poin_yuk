@@ -27,7 +27,7 @@ require_once("auth.php");
             letter-spacing: -1px;
         }
 
-        #ava-profil{
+        .ava-profil{
             border-radius: 50%;
             width: 35%; 
             align-content: center;
@@ -51,7 +51,7 @@ require_once("auth.php");
                     <span class="login100-form-title p-b-33">
                         <p class="edit-profil-title">Edit Profil</p>
                         <br>
-                        <img src="img/user.png" id="ava-profil" alt=""></img><br>
+                        <img src="img/user.png" class="ava-profil" alt=""></img><br>
                         <!-- <input class="input100" type="text" name="profile_pic" placeholder="Profile Picture"> -->
                         <!-- <input type="submit" name="choose_file" class="btn" value="Choose File..." /> -->
                     </span>
@@ -81,7 +81,7 @@ require_once("auth.php");
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="">
-                        <p>Pilih foto profil: </p><input type="file" id="img" name="img" accept="image/*">
+                        <p>Pilih foto profil (Max 1 mb) : </p><input type="file" id="ava-img" name="ava-img" accept="image/*">
                         <span class="focus-input100-1"></span>
                         <span class="focus-input100-2"></span>
                     </div>
@@ -113,7 +113,11 @@ $(document).ready(function(){
                 $("#alamat").val(data.data[0].alamat);
                 $("#email").val(data.data[0].email);
                 $("#no_hp").val(data.data[0].no_hp);
-                $("#ava-profil").attr('src', data.data[0].ava_url);
+                if(data.data[0].ava_url === ""){
+                    $(".ava-profil").attr('src', 'img/user.png');
+                }else{
+                    $(".ava-profil").attr('src', data.data[0].ava_url);
+                }
             }
         }
     });

@@ -22,6 +22,9 @@
                         <a class="nav-link" href="profil.php"><strong>Profil</strong></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="list_voucher_redeem.php"><strong>Voucher</strong></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="bantuan.php"><strong>Bantuan</strong></a>
                     </li>
                     <li class="nav-item">

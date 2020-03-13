@@ -1,14 +1,16 @@
 <?php
     $target_dir = "upload/";
-    $temp = explode(".", $_FILES["img"]["name"]);
+    $temp = explode(".", $_FILES["ava-img"]["name"]);
     $newfilename = round(microtime(true)). '.' . end($temp);
     $target_file = $target_dir . $newfilename;
-    $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $uploadOk = 1;
+    
 
     //Check if image file is a actual image or fake image
     if(isset($_POST["submit"])){
-        $check = getimagesize($_FILES["img"]["tmp_name"]);
+        
+        $check = getimagesize($_FILES["ava-img"]["tmp_name"]);
         if($check !== false){
             // echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
@@ -25,7 +27,7 @@
     }
 
     //Check file size
-    if($_FILES["img"]["size"] > 500000){
+    if($_FILES["ava-img"]["size"] > 1000000){
         // echo "Sorry, your file is too large";
         $uploadOk = 0;
     }    
@@ -42,7 +44,7 @@
         echo "invalid";
     //if everything is ok, upload file    
     }else{
-        if(move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)){
+        if(move_uploaded_file($_FILES["ava-img"]["tmp_name"], $target_file)){
             echo $target_file;
         }else{
             echo "invalid";
