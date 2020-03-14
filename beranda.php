@@ -340,10 +340,17 @@ require_once("auth.php");
                     }
 
                     for (i = 3; i < data.data.length; i++) {
-                        rank.push($("<tr>" +
+                        if(data.data[i].username === data.data[0].username){
+                            rank.push($("<tr>" +
+                            "<td width='100'><span style='font-weight:bold'>" + data.data[i].username + "</span></td>" +
+                            "<td><span style='font-weight:bold'>" + data.data[i].poin + "</span></td>" +
+                            "</tr>"));
+                        }else{
+                            rank.push($("<tr>" +
                             "<td width='100'>" + data.data[i].username + "</td>" +
                             "<td>" + data.data[i].poin + "</td>" +
                             "</tr>"));
+                        }
                     }
                     $("tbody").append(rank);
                 }

@@ -130,6 +130,9 @@ require_once("auth.php");
                 width: 100%;
                 margin-bottom: 10px;
             }
+            .card{
+                margin:10px;
+            }
     </style>
 </head>
 
@@ -249,7 +252,6 @@ require_once("auth.php");
                             +"</p></div>"
                             +"<p class='voucher-expired'>Masa Berlaku : <br>"+voucherData.data[i].valid_start+" - "+voucherData.data[i].valid_end
                             +"</p></div>"
-                            +"<button class='btn btn-success' id='btn-redeem' data='"+voucherData.data[i].kode_voucher+"'>Redeem</button>"
                             +"</div>"
                             +"</div>"));
                     }

@@ -60,7 +60,7 @@
 					<div class="container-login100-form-btn m-t-20">
 						<button class="login-submit login100-form-btn">Masuk</button>
 						<!-- <input type="submit" name="login" class="login100-form-btn" value="Masuk" /> -->
-						<button onclick="window.location.href='index.php';" class="login100-form-btn">Batal</button>
+						<a href="index.php" class="login100-form-btn">Batal</a>
 					</div>
 				</form>
 
