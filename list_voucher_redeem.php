@@ -67,7 +67,7 @@ require_once("auth.php");
         <!-- Page Content -->
         <div ></div>
         <div class="album text-muted" id="parent1" style="background-color:#e2e2e2; width:100%;">
-            <div class="jumbotron" id="parent2" style="background-image: url(img/menulong.png); width: 100%; height: 50%;">
+            <div class="jumbotron" id="parent2" style="background-image: linear-gradient(to right bottom, #287e42, #269d43, #2bbd3f, #39de33, #50ff12); width: 100%; height: 50%;">
                 <h3 class="title-list-voucher">List Voucher Redeem</h3>
                 <div class="dropdown-divider" style="border: 1px solid white;"></div><br>
                     <div id="voucher" class="row justify-content-center">

@@ -140,7 +140,7 @@ require_once("auth.php");
     <?php include('layout/navbar-menu.php') ?>
 
     <div class="album text-muted" style="background-color:#e2e2e2; width:100%;">
-        <div class="jumbotron" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
+        <div class="jumbotron" style="background-image: linear-gradient(to right bottom, #287e42, #269d43, #2bbd3f, #39de33, #50ff12); width: 100%; height: 50%;">
             <h3 class="title-profil">Profil</h3>
             <div class="dropdown-divider" style="border: 1px solid #e9ecef;"></div><br>
             

@@ -31,7 +31,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url(img/menuxlong.png); width: 100%; height: 50%;">
+		<div class="container-login100" style="background-image: linear-gradient(to right bottom, #287e42, #269d43, #2bbd3f, #39de33, #50ff12); width: 100%; height: 50%;">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-50">
 				<form action="" method="" class="login100-form validate-form" id="form-login">
 					<span class="login100-form-title p-b-33">

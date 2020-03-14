@@ -80,7 +80,7 @@
     <?php include('layout/navbar-index.php') ?>
 
     <!-- -------------------------Page Content Section------------------------- -->
-    <div class="album text-muted" style="background-image: url('img/menu.png'); width: 100%; height: 450px;">
+    <div class="album text-muted" style="background-image: linear-gradient(to right bottom, #287e42, #269d43, #2bbd3f, #39de33, #50ff12); width: 100%; height: 450px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 offset-md-1">
@@ -133,7 +133,7 @@
             </div>
         </div>
     </div>
-    <div class="album text-muted" style="background-image: url('img/menu.png'); width: 100%; height: 350px;">
+    <div class="album text-muted" style="background-image: linear-gradient(to right bottom, #287e42, #269d43, #2bbd3f, #39de33, #50ff12); width: 100%; height: 350px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
