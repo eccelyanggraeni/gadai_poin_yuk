@@ -53,7 +53,7 @@ require_once("auth.php");
             padding-bottom: 40px;
         }
 
-        .title-profil{
+        .title-profil {
             color: #e9ecef;
             font-family: 'Open Sans', sans-serif;
             font-weight: normal;
@@ -67,7 +67,7 @@ require_once("auth.php");
             text-align: center;
         }
 
-        .voucher-response{
+        .voucher-response {
             font-size: 20px;
             letter-spacing: -1px;
             text-align: center;
@@ -77,62 +77,64 @@ require_once("auth.php");
         #voucher-container {
             background-color: #e9ecef;
             width: auto;
-            height: 545px;
+            height: 100%;
             border-radius: 10px;
             margin-top: 10px;
             padding-top: 40px;
             padding-bottom: 40px;
         }
 
-        .jumbotron{
-            padding: 3rem 3rem!important;
+        .jumbotron {
+            padding: 3rem 3rem !important;
         }
 
         .card-title {
-                font-family: 'Open Sans', sans-serif;
-                font-weight: bold;
-                font-size: 25px;
-                color: black;
-                margin-bottom: .75rem;
-                text-align: center;
-            }
-            #voucher.row {
-                margin-right: 0px!important;
-                margin-left: 0px!important;
-            }
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            color: black;
+            margin-bottom: .75rem;
+            text-align: center;
+        }
 
-            .card {
-                background-color: #eedfcc;
-            }
+        #voucher.row {
+            margin-right: 0px !important;
+            margin-left: 0px !important;
+        }
 
-            p.voucher-detail{
-                font-family: 'Dosis', sans-serif;
-                text-align: center;
-                font-size: 17px;
-                margin-bottom: 10px;
-            }
+        .card {
+            background-color: #eedfcc;
+        }
 
-            p.voucher-price{
-                font-family: 'Dosis', sans-serif;
-                font-size: 15px;
-                margin-bottom: 10px;
-            }
+        p.voucher-detail {
+            font-family: 'Dosis', sans-serif;
+            text-align: center;
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
 
-            p.voucher-expired{
-                font-family: 'Dosis', sans-serif;
-                font-size: 15px;
-                margin-bottom: 10px;
-            }
+        p.voucher-price {
+            font-family: 'Dosis', sans-serif;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
 
-            button{
-                font-family: 'Dosis', sans-serif;
-                font-size: 15px;
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            .card{
-                margin:10px;
-            }
+        p.voucher-expired {
+            font-family: 'Dosis', sans-serif;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-family: 'Dosis', sans-serif;
+            font-size: 15px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            margin: 10px;
+        }
     </style>
 </head>
 
@@ -143,45 +145,45 @@ require_once("auth.php");
         <div class="jumbotron" style="background-image: linear-gradient(to right bottom, #287e42, #269d43, #2bbd3f, #39de33, #50ff12); width: 100%; height: 50%;">
             <h3 class="title-profil">Profil</h3>
             <div class="dropdown-divider" style="border: 1px solid #e9ecef;"></div><br>
-            
+
             <div id="profil-container">
-            <div class="row">
-                <div class="col-md-12">
-                    
+                <div class="row">
+                    <div class="col-md-12">
+
                         <p class="profil-container-title"><?php echo $_SESSION["username"] ?> Profile</p><br>
                         <img src="uploads/
                             user.png" class="ava-profil" alt=""><br>
 
                         <div class="row justify-content-center">
-                        <table>
-                            <tr height="50">
-                                <td width="100"><strong>CIF</strong></td>
-                                <td width="50">:</td>
-                                <td width="150"><?php echo $_SESSION['cif'] ?></td>
-                                <td width="100"><strong>Nama</strong></td>
-                                <td width="50">:</td>
-                                <td width="150" id="nama"></td>
-                            </tr>
-                            <tr height="50">
-                                <td width="100"><strong>Alamat</strong></td>
-                                <td width="50">:</td>
-                                <td width="150" id="alamat"></td>
-                                <td width="100"><strong>E-mail</strong></td>
-                                <td width="50">:</td>
-                                <td width="150" id="email"></td>
-                            </tr>
-                            </tr>
-                            <tr height="50">
-                                <td width="100"><strong>No. HP</strong></td>
-                                <td width="50">:</td>
-                                <td width="150" id="no_hp"></td>
-                                <td width="100"><strong>Username</strong></td>
-                                <td width="50">:</td>
-                                <td width="150"><?php echo $_SESSION['username'] ?></td>
-                            </tr>
-                        </table>
+                            <table>
+                                <tr height="50">
+                                    <td width="100"><strong>CIF</strong></td>
+                                    <td width="50">:</td>
+                                    <td width="150"><?php echo $_SESSION['cif'] ?></td>
+                                    <td width="100"><strong>Nama</strong></td>
+                                    <td width="50">:</td>
+                                    <td width="150" id="nama"></td>
+                                </tr>
+                                <tr height="50">
+                                    <td width="100"><strong>Alamat</strong></td>
+                                    <td width="50">:</td>
+                                    <td width="150" id="alamat"></td>
+                                    <td width="100"><strong>E-mail</strong></td>
+                                    <td width="50">:</td>
+                                    <td width="150" id="email"></td>
+                                </tr>
+                                </tr>
+                                <tr height="50">
+                                    <td width="100"><strong>No. HP</strong></td>
+                                    <td width="50">:</td>
+                                    <td width="150" id="no_hp"></td>
+                                    <td width="100"><strong>Username</strong></td>
+                                    <td width="50">:</td>
+                                    <td width="150"><?php echo $_SESSION['username'] ?></td>
+                                </tr>
+                            </table>
                         </div>
-    
+
                         <div class="container-login100-form-btn m-t-20 justify-content-center">
                             <button onclick="window.location.href = 'edit_profil.php';" class="login100-form-btn">Edit Profil</button>
                         </div>
@@ -190,21 +192,27 @@ require_once("auth.php");
             </div>
 
             <div id="voucher-container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="voucher-container-title">Voucher</p><br>
-                    <div id="voucher-detail" class="row justify-content-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="voucher-container-title">Voucher</p><br>
+                        <div id="voucher-detail" class="row justify-content-center">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 <?php include('layout/footer.php') ?>
 
 <script>
     $(document).ready(function() {
+        Notiflix.Confirm.Init({
+            width: "400px",
+            messageMaxLength: 1500,
+            plainText: false
+        });
+
         var cif = <?php echo $_SESSION["cif"] ?>;
         var voucher = [];
         $.ajax({
@@ -214,6 +222,10 @@ require_once("auth.php");
                 cif: cif
             },
             dataType: 'json',
+            beforeSend: function() {
+                // Statement
+                Notiflix.Loading.Pulse('Mohon Menunggu...');
+            },
             success: function(data) {
                 console.log(data.data);
                 if (data.status == true) {
@@ -221,12 +233,16 @@ require_once("auth.php");
                     $("td#alamat").html(data.data[0].alamat);
                     $("td#email").html(data.data[0].email);
                     $("td#no_hp").html(data.data[0].no_hp);
-                    if(data.data[0].ava_url === ""){
+                    if (data.data[0].ava_url === "") {
                         $(".ava-profil").attr('src', 'img/user.png');
-                    }else{
+                    } else {
                         $(".ava-profil").attr('src', data.data[0].ava_url);
                     }
                 }
+            },
+            complete: function(data) {
+                // remove
+                Notiflix.Loading.Remove();
             }
         });
 
@@ -237,32 +253,86 @@ require_once("auth.php");
                 cif: cif
             },
             dataType: 'json',
+            beforeSend: function() {
+                Notiflix.Loading.Pulse('Mohon Menunggu...');
+            },
             success: function(voucherData) {
                 console.log(voucherData.data);
                 if (voucherData.status == true) {
-                    for(i=0;i<voucherData.data.length;i++){
+                    for (i = 0; i < voucherData.data.length; i++) {
                         voucher.push($(
                             "<div class='card col-md-3'>"
                             // +"<img class='card-img-top' src='#' alt='Card image cap'>"
-                            +"<div class='card-body'>"
-                            +"<h5 class='card-title'>"+voucherData.data[i].nama_voucher+"</h5>"
-                            +"<div class='card-text'>"
-                            +"<p class='voucher-detail'>"+voucherData.data[i].detail+" sebesar "+voucherData.data[i].jumlah_potongan+" rupiah</p>" 
-                            +"<p class='voucher-price'>Harga : "+voucherData.data[i].harga_voucher+" poin"
-                            +"</p></div>"
-                            +"<p class='voucher-expired'>Masa Berlaku : <br>"+voucherData.data[i].valid_start+" - "+voucherData.data[i].valid_end
-                            +"</p></div>"
-                            +"</div>"
-                            +"</div>"));
+                            +
+                            "<div class='card-body'>" +
+                            "<h5 class='card-title'>" + voucherData.data[i].nama_voucher + "</h5>" +
+                            "<div class='card-text'>" +
+                            "<p class='voucher-detail'>" + voucherData.data[i].detail + "</p>" +
+                            "<p class='voucher-price'>Harga : " + voucherData.data[i].harga_voucher + " poin" +
+                            "</p></div>" +
+                            "<p class='voucher-expired'>Masa Berlaku : <br>" + voucherData.data[i].valid_start + " - " + voucherData.data[i].valid_end +
+                            "</p></div>" +
+                            "<button class='btn btn-success btn-use' data='" + voucherData.data[i].kode_tukarpoin + "'>Gunakan</button>" +
+                            "</div>" +
+                            "</div>"));
                     }
-                }else{
+                } else {
                     $("#voucher-container").css("height", "225px");
                     voucher.push($(
                         "<p class='voucher-response'>Anda belum memiliki voucher, segera tingkatkan poin anda dan tukarkan poin anda dengan beragam voucher yang tersedia.</p>"
                     ));
                 }
                 $("#voucher-detail").append(voucher);
+            },
+            complete: function(data) {
+                Notiflix.Loading.Remove();
             }
+        });
+        $("#voucher-detail").on('click', '.btn-use', function() {
+            var cif = <?php echo $_SESSION["cif"] ?>;
+            var kode_tukarpoin = $(this).attr('data');
+
+            var text =
+                `Apakah anda yakin menggunakan voucher ini ?
+                <br>Tunjukan kepada petugas untuk menggunakan voucher.
+                <br>Jika anda menekan tombol <b>ya</b> sendiri, maka voucher dianggap telah digunakan.`;
+            Notiflix.Confirm.Show(
+                'Konfirmasi',
+                text,
+                'Ya',
+                'Tidak',
+                function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://gade-poin-yuk.com/api/voucher/usevoucher',
+                        data: {
+                            cif: cif,
+                            kode_tukarpoin: kode_tukarpoin
+                        },
+                        beforeSend: function(){
+                            Notiflix.Loading.Pulse('Mohon Menunggu...');
+                        },
+                        success: function(data){
+                            if(data.status == true){
+                                Notiflix.Report.Success(
+                                    'Sukses',
+                                    data.message,
+                                    'Ok',
+                                    function(){
+                                        window.location.href = "profil.php";
+                                    }
+                                )
+                            }else{
+                                Notiflix.Report.Failure(
+                                    'Terjadi Kesalahan',
+                                    data.message,
+                                    'Ok'
+                                ); 
+                            };
+                        }
+                    })
+                }
+            );
         });
     });
 </script>

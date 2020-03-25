@@ -80,73 +80,72 @@ require_once("auth.php");
     <?php include('layout/footer.php') ?>
 
     <script>
-    $(document).ready(function(){
-        var cards = [];
-        $.ajax({
-            type: 'GET',
-            url: 'http://gade-poin-yuk.com/api/voucher',
-            dataType: 'json',
-            success : function(data){            
-                console.log(data.data);
-                for(i=0;i<data.data.length;i++){
-                    cards.push($("<div class='card col-sm-3'>"
-                            +"<div class='card-body'>"
-                            +"<h5 class='card-title'>"+data.data[i].nama_voucher+"</h5>"
-                            +"<div class='card-text'>"
-                            +"<p class='voucher-detail'>"+data.data[i].detail+" sebesar "+data.data[i].jumlah_potongan+" rupiah</p>" 
-                            +"<p class='voucher-price'>Harga : "+data.data[i].harga_voucher+" poin"
-                            +"</p></div>"
-                            +"<p class='voucher-expired'>Masa Berlaku : <br>"+data.data[i].valid_start+" - "+data.data[i].valid_end
-                            +"</p></div>"
-                            +"<button class='btn btn-success btn-redeem' data='"+data.data[i].kode_voucher+"'>Redeem</button>"
-                            +"</div>"
-                            +"</div>"));
-                    // $("#btn-redeem").trigger('click');
-                }
-                $("#voucher").append(cards);
-            }
-        });
-        $("#voucher").on('click','.btn-redeem', function(){
-            var cif = <?php echo $_SESSION["cif"] ?>;
-            var kode_voucher = $(this).attr('data');
+        $(document).ready(function(){
+            var cards = [];
             $.ajax({
-                type: 'POST',
-                url: 'http://gade-poin-yuk.com/api/transaksitukar_poin',
-                data: {cif: cif, kode_voucher: kode_voucher},
+                type: 'GET',
+                url: 'http://gade-poin-yuk.com/api/voucher',
                 dataType: 'json',
-                success : function(data){
-                    if(data.status == true){
-                        alert(data.message);
-                    }else{
-                        alert(data.message);
+                beforeSend: function(){
+                    Notiflix.Loading.Pulse('Mohon Menunggu...');
+                },
+                success : function(data){            
+                    console.log(data.data);
+                    for(i=0;i<data.data.length;i++){
+                        cards.push($("<div class='card col-sm-3'>"
+                                +"<div class='card-body'>"
+                                +"<h5 class='card-title'>"+data.data[i].nama_voucher+"</h5>"
+                                +"<div class='card-text'>"
+                                +"<p class='voucher-detail'>"+data.data[i].detail+"</p>" 
+                                +"<p class='voucher-price'>Harga : "+data.data[i].harga_voucher+" poin"
+                                +"</p></div>"
+                                +"<p class='voucher-expired'>Masa Berlaku : <br>"+data.data[i].valid_start+" - "+data.data[i].valid_end
+                                +"</p></div>"
+                                +"<button class='btn btn-success btn-redeem' data='"+data.data[i].kode_voucher+"'>Redeem</button>"
+                                +"</div>"
+                                +"</div>"));
+                        // $("#btn-redeem").trigger('click');
                     }
+                    $("#voucher").append(cards);
+                },
+                complete: function(data){
+                    Notiflix.Loading.Remove();
                 }
             });
-        });
+            $("#voucher").on('click','.btn-redeem', function(){
+                var cif = <?php echo $_SESSION["cif"] ?>;
+                var kode_voucher = $(this).attr('data');
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://gade-poin-yuk.com/api/transaksitukar_poin',
+                    data: {cif: cif, kode_voucher: kode_voucher},
+                    dataType: 'json',
+                    beforeSend: function(){
+                        Notiflix.Loading.Pulse('Mohon Menunggu...');
+                    },
+                    success : function(data){
+                        if(data.status == true){
+                            Notiflix.Report.Success(
+                                'Sukses',
+                                data.message,
+                                'Ok'
+                            );
+                            // alert(data.message);
+                        }else{
+                            Notiflix.Report.Failure(
+                                'Terjadi Kesalahan',
+                                data.message,
+                                'Ok'
+                            );
+                            // alert(data.message);
+                        }
+                    },
+                    complete: function(data){
+                        Notiflix.Loading.Remove();
+                    }
+                });
+            });
 
-    });
-    // $(document).ajaxComplete(function(event, xhr, settings) {
-    //     console.log(xhr.responseText);
-    //     console.log(event);
-    //     console.log(settings);
-    //     $("#btn-redeem").index().on('click', function(e){
-    //         e.preventDefault();
-    //         var cif = <?php echo $_SESSION["cif"] ?>;
-    //         var kode_voucher = $("#btn-redeem").attr('data');
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: 'http://gade-poin-yuk.com/api/transaksitukar_poin',
-    //             data: {cif: cif, kode_voucher: kode_voucher},
-    //             dataType: 'json',
-    //             success : function(data){
-    //                 if(data.status == true){
-    //                     alert("sukses");
-    //                 }else{
-    //                     alert("gagal");
-    //                 }
-    //             }
-    //         });   
-    //     });
-    // });
+        });
     </script>
 </html>

@@ -27,14 +27,15 @@
 <link rel="stylesheet" type="text/css" href="css/util.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-
+<link rel="stylesheet" href="css/notiflix-2.1.2.min.css">
+<!--===============================================================================================-->
 <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
 </style>
 
 <!--===============================================================================================-->
-<!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script> -->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -49,3 +50,5 @@
 <script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
+<script src="js/tata.js"></script>
+<script src="js/notiflix-2.1.2.js"></script>

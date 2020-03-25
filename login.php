@@ -1,5 +1,5 @@
 <style>
-	.login100-form-title{
+	.login100-form-title {
 		font-family: 'Open Sans', sans-serif;
 		letter-spacing: -2px;
 	}
@@ -10,12 +10,12 @@
 		margin-bottom: -30px;
 	}
 
-	form input{
+	form input {
 		font-family: 'Dosis', sans-serif;
 		text-align: center;
 	}
 
-	#form-login .login-submit button{
+	#form-login .login-submit button {
 		font-family: 'Dosis', sans-serif;
 	}
 </style>
@@ -25,7 +25,7 @@
 
 <head>
 	<title>Login - Gadai Poin Yuk</title>
-	<?php include('layout/head.php') ?>   	
+	<?php include('layout/head.php') ?>
 </head>
 
 <body>
@@ -81,31 +81,57 @@
 <?php include('layout/footer.php') ?>
 
 <script>
-	$(".login-submit").click(function(e){
-        e.preventDefault();
-        var username = $("input[name=username]").val();
-        var password = $("input[name=password]").val();
+	$(".login-submit").click(function(e) {
+		e.preventDefault();
+		var username = $("input[name=username]").val();
+		var password = $("input[name=password]").val();
 
 		$.ajax({
-            type: 'POST',
-            url: 'http://gade-poin-yuk.com/api/user/login',
-            data: {
-                username: username,
-                password: password
-            },
-            dataType: 'json',
-            success : function(data){
-                if(data.status == true){
-                    alert(data.message);
-					$.post('updatesession.php', {cif: data.data[0].cif, 
-												 username: data.data[0].username});
-                    window.location.href = "beranda.php";
-                }
-                else{
-                    alert(data.message);
-                }
-            }
-        });
+			type: 'POST',
+			url: 'http://gade-poin-yuk.com/api/user/login',
+			data: {
+				username: username,
+				password: password
+			},
+			dataType: 'json',
+			beforeSend: function() {
+				// Statement
+				Notiflix.Loading.Pulse('Mohon Menunggu...');
+			},
+			success: function(data) {
+				if (data.status == true) {
+					Notiflix.Report.Success(
+						'Sukses',
+						data.message,
+						'Ok',
+						function() {
+							$.post('updatesession.php', {
+								cif: data.data[0].cif,
+								username: data.data[0].username
+							});
+							window.location.href = "beranda.php";
+						}
+					);
+					// alert(data.message);
+
+					// $.post('updatesession.php', {cif: data.data[0].cif, 
+					// 							 username: data.data[0].username});
+					// window.location.href = "beranda.php";
+				} else {
+					// alert(data.message);
+					Notiflix.Report.Failure(
+						'Terjadi Kesalahan',
+						data.message,
+						'Ok'
+					);
+				}
+			},
+			complete: function(data) {
+				// remove
+				Notiflix.Loading.Remove();
+			}
+		});
 	});
 </script>
+
 </html>

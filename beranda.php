@@ -15,6 +15,7 @@ require_once("auth.php");
         .carousel-item {
             height: 250px;
         }
+
         .carousel-item img {
             position: absolute;
             top: 0;
@@ -158,19 +159,19 @@ require_once("auth.php");
             color: #8b8878;
         }
 
-        h4.modal-title{
+        h4.modal-title {
             font-family: 'Open Sans', sans-serif;
             color: black;
             text-align: center;
         }
 
-        tbody>tr>td{
+        tbody>tr>td {
             font-family: 'Dosis', sans-serif;
             color: #8b8878;
             font-size: 15px;
         }
 
-        thead>tr>td{
+        thead>tr>td {
             font-family: 'Open Sans', sans-serif;
             color: black;
             font-weight: bold;
@@ -318,6 +319,12 @@ require_once("auth.php");
 
 <script>
     $(document).ready(function() {
+        Notiflix.Confirm.Init({
+            width: "400px",
+            messageMaxLength: 1500,
+            plainText: false
+        });
+
         var cif = <?php echo $_SESSION["cif"] ?>;
         var rank = [];
         $.ajax({
@@ -327,8 +334,11 @@ require_once("auth.php");
                 cif: cif
             },
             dataType: 'json',
+            beforeSend: function() {
+                // Statement
+                Notiflix.Loading.Pulse('Mohon Menunggu...');
+            },
             success: function(data) {
-                console.log(data.data);
                 if (data.status == true) {
                     $(".nama").html(data.data[0].nama);
                     $(".poin").html(data.data[1].poin);
@@ -340,20 +350,24 @@ require_once("auth.php");
                     }
 
                     for (i = 3; i < data.data.length; i++) {
-                        if(data.data[i].username === data.data[0].username){
+                        if (data.data[i].username === data.data[0].username) {
                             rank.push($("<tr>" +
-                            "<td width='100'><span style='font-weight:bold'>" + data.data[i].username + "</span></td>" +
-                            "<td><span style='font-weight:bold'>" + data.data[i].poin + "</span></td>" +
-                            "</tr>"));
-                        }else{
+                                "<td width='100'><span style='font-weight:bold'>" + data.data[i].username + "</span></td>" +
+                                "<td><span style='font-weight:bold'>" + data.data[i].poin + "</span></td>" +
+                                "</tr>"));
+                        } else {
                             rank.push($("<tr>" +
-                            "<td width='100'>" + data.data[i].username + "</td>" +
-                            "<td>" + data.data[i].poin + "</td>" +
-                            "</tr>"));
+                                "<td width='100'>" + data.data[i].username + "</td>" +
+                                "<td>" + data.data[i].poin + "</td>" +
+                                "</tr>"));
                         }
                     }
                     $("tbody").append(rank);
                 }
+            },
+            complete: function(data) {
+                // remove
+                Notiflix.Loading.Remove();
             }
         });
 
@@ -364,22 +378,129 @@ require_once("auth.php");
             var cif = <?php echo $_SESSION["cif"] ?>;
 
             $.ajax({
-                type: 'POST',
-                url: 'http://gade-poin-yuk.com/api/konversi_poin',
+                type: 'GET',
+                url: 'http://gade-poin-yuk.com/api/transaksi/transaksicheck',
                 data: {
-                    no_transaksi: no_transaksi,
-                    cif: cif
+                    cif: cif,
+                    no_transaksi: no_transaksi
                 },
                 dataType: 'json',
+                beforeSend: function() {
+                    Notiflix.Loading.Pulse('Mohon Menunggu...');
+                },
                 success: function(data) {
                     if (data.status == true) {
-                        alert(data.message);
-                        window.location.href = "beranda.php";
+                        var text =  '<b>Anda akan melakukan konversi poin terhadap : </b> ' +
+                                    '<br><b>No. Transaksi</b> : ' + data.data[0]['no_transaksi'] +
+                                    '<br><b>Jenis Transaksi</b> : ' + data.data[0]['jenis_transaksi'] +
+                                    '<br><b>Nominal Transaksi</b> : ' + data.data[0]['nominal'] +
+                                    '<br><b>Potensi poin yang didapat</b> : ' + data.data[1]['potensi_poin'];
+                        Notiflix.Confirm.Show(
+                            'Konfirmasi',
+                            text,
+                            'Ya',
+                            'Tidak',
+                            function(){
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'http://gade-poin-yuk.com/api/konversi_poin',
+                                    data: {
+                                        no_transaksi: no_transaksi,
+                                        cif: cif
+                                    },
+                                    dataType: 'json',
+                                    beforeSend: function() {
+                                        // Statement
+                                        Notiflix.Loading.Pulse('Mohon Menunggu...');
+                                    },
+                                    success: function(data) {
+                                        if (data.status == true) {
+                                            Notiflix.Report.Success(
+                                                'Sukses',
+                                                data.message,
+                                                'Ok',
+                                                function() {
+                                                    window.location.href = "beranda.php";
+                                                }
+                                            );
+                                            // alert(data.message);
+                                            // window.location.href = "beranda.php";
+                                        } else {
+                                            Notiflix.Report.Failure(
+                                                'Terjadi Kesalahan',
+                                                data.message,
+                                                'Ok'
+                                            );
+                                            // alert(data.message);
+                                        }
+                                    },
+                                    complete: function(data) {
+                                        // remove
+                                        Notiflix.Loading.Remove();
+                                    }
+                                })
+                            }
+                        );
                     } else {
-                        alert(data.message);
+                        Notiflix.Report.Failure(
+                            'Terjadi Kesalahan',
+                            data.message,
+                            'Ok'
+                        );
                     }
+                },
+                complete: function(data) {
+                    Notiflix.Loading.Remove();
                 }
             });
+            // Notiflix.Confirm.Show(
+            //     'Konfirmasi',
+            //     'Apakah anda yakin ingin keluar ?',
+            //     'Ya',
+            //     'Tidak',
+            //     function(){
+            //         //Ya callback
+            //         window.location.href = "logout.php";
+            //     }
+            // )            
+            // $.ajax({
+            //     type: 'POST',
+            //     url: 'http://gade-poin-yuk.com/api/konversi_poin',
+            //     data: {
+            //         no_transaksi: no_transaksi,
+            //         cif: cif
+            //     },
+            //     dataType: 'json',
+            //     beforeSend: function() {
+            //         // Statement
+            //         Notiflix.Loading.Pulse('Mohon Menunggu...');
+            //     },
+            //     success: function(data) {
+            //         if (data.status == true) {
+            //             Notiflix.Report.Success(
+            //                 'Sukses',
+            //                 data.message,
+            //                 'Ok',
+            //                 function() {
+            //                     window.location.href = "beranda.php";
+            //                 }
+            //             );
+            //             // alert(data.message);
+            //             // window.location.href = "beranda.php";
+            //         } else {
+            //             Notiflix.Report.Failure(
+            //                 'Terjadi Kesalahan',
+            //                 data.message,
+            //                 'Ok'
+            //             );
+            //             // alert(data.message);
+            //         }
+            //     },
+            //     complete: function(data) {
+            //         // remove
+            //         Notiflix.Loading.Remove();
+            //     }
+            // });
         });
     });
 </script>

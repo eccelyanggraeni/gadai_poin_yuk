@@ -47,6 +47,10 @@ require_once("auth.php");
             type: 'GET',
             url: 'http://gade-poin-yuk.com/api/bantuan',
             dataType: 'json',
+            beforeSend: function() {
+				// Statement
+				Notiflix.Loading.Pulse('Mohon Menunggu...');
+			},
             success : function(data){            
                 console.log(data.data);
                 for(i=0;i<data.data.length;i++){
@@ -64,7 +68,11 @@ require_once("auth.php");
                 +"</div></br>"));
                 }
                 $("#accordion").append(bantuan);
-            }
+            },
+            complete: function(data) {
+				// remove
+				Notiflix.Loading.Remove();
+			}
         });
     });
 </script>

@@ -106,6 +106,9 @@ $(document).ready(function(){
         url: 'http://gade-poin-yuk.com/api/user',
         data: {cif: cif},
         dataType: 'json',
+        beforeSend: function(){
+            Notiflix.Loading.Pulse('Mohon Menunggu...');
+        },
         success : function(data){
             console.log(data.data[0]);
             if(data.status == true){
@@ -119,6 +122,9 @@ $(document).ready(function(){
                     $(".ava-profil").attr('src', data.data[0].ava_url);
                 }
             }
+        },
+        complete: function(data){
+            Notiflix.Loading.Remove();
         }
     });
 
@@ -154,13 +160,32 @@ $(document).ready(function(){
                             ava_url: profpict
                         },
                         dataType: 'json',
+                        beforeSend: function(){
+                            Notiflix.Loading.Pulse('Mohon Menunggu...');
+                        },
                         success : function(data){
                             if(data.status == true){
-                                alert(data.message);
-                                window.location.href = "profil.php";
+                                Notiflix.Report.Success(
+                                    'Sukses',
+                                    data.message,
+                                    'Ok',
+                                    function() {
+                                        window.location.href = "profil.php";
+                                    }
+                                );
+                                // alert(data.message);
+                                // window.location.href = "profil.php";
                             }else{
-                                alert(data.message);
+                                Notiflix.Report.Failure(
+                                    'Terjadi Kesalahan',
+                                    data.message,
+                                    'Ok'
+                                );
+                                // alert(data.message);
                             }                            
+                        },
+                        complete: function(data){
+                            Notiflix.Loading.Remove();
                         }
                     });
                 }
